@@ -1,0 +1,316 @@
+@import "./color.scss";
+@import "./container-sizes";
+@import "./fonts";
+@import "./border-radius";
+@import "./antOverride";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+:root,
+body {
+    font-family: "Circular Std", "Roboto", sans-serif; /* Add Circular Std if available */
+    font-size: 16px;
+    --app-height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5; /* Slightly increased for better readability */
+    color: #333; /* Use a dark grey for text */
+    background-color: #f9f9f9; /* A light background color for contrast */
+ 
+
+}
+
+
+* {
+    font-family: "Circular Std", "Roboto", sans-serif; /* Include Circular Std if possible */
+    box-sizing: border-box; /* Ensures padding and borders are included in total width/height */
+}
+
+:root,
+body {
+
+	//converting scss variables to css variables
+	@each $name,
+	$color in $colors {
+		@if type-of($color)==list {
+			--color-#{$name}: rgb(#{$color});
+			--color-#{$name}-rgb: #{$color};
+		}
+
+		@else {
+			--color-#{$name}: #{$color};
+		}
+	}
+
+	@each $key,
+	$value in $font_sizes {
+		--font-size-#{$key}: #{$value};
+	}
+
+	--theme: "light-mode";
+}
+svg[fill="inherit"],
+svg[fill="inherit"] {
+    fill: #757575; /* Default fill color */
+}
+
+svg[stroke="inherit"],
+svg[stroke="inherit"] {
+    stroke: #757575; /* Default stroke color */
+}
+
+body {
+    color: var(--dark-color); /* Use a CSS variable for color */
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 991px) {
+    body.sidebar-open {
+        overflow: hidden; /* Prevent scrolling when sidebar is open */
+    }
+}
+
+
+@each $eachColor,
+$eachColorValue in $colors {
+	.color-#{$eachColor} {
+		color: getColor($eachColor);
+	}
+
+	.\!color-#{$eachColor} {
+		color: getColor($eachColor) !important;
+	}
+
+	.bg-#{$eachColor} {
+		background-color: getColor($eachColor);
+	}
+
+	.\!bg-#{$eachColor} {
+		background-color: getColor($eachColor) !important;
+	}
+
+	.border-#{$eachColor} {
+		border: 1px solid getColor($eachColor);
+	}
+
+	.box-shadow-#{$eachColor} {
+		box-shadow: 0px 8px 16px 0px getColorWithAlpha($eachColor, 0.5);
+	}
+
+	.box-shadow-none {
+		box-shadow: none;
+	}
+}
+
+a:hover {
+	color: inherit;
+}
+
+.form-error-data {
+	font-size: var(--font-size-xs);
+	padding-left: 15px;
+}
+
+.pointer-events-none {
+	pointer-events: none;
+}
+
+.user-select-none {
+	user-select: none;
+}
+
+//rich text editor
+.rte-editor {
+    height: 275px !important; /* Adjust if necessary */
+    border: 1px solid #F1F1F1 !important; /* Match Xero's border style */
+    padding: 5px !important; /* Maintain padding */
+    border-radius: 2px !important; /* Ensure consistent rounding */
+}
+
+.dangerouslySetWrap {
+    h1,
+    h2,
+    h3 {
+        font-size: 24px; /* Use specific sizes from Xero's typography */
+        font-weight: 700; /* Bold weight */
+        color: #004b87; /* Replace with Xero's primary color */
+        margin: 0.75rem 0;
+    }
+
+    h4,
+    h5,
+    h6 {
+        font-size: 20px; /* Specific sizes */
+        font-weight: 700; /* Bold weight */
+        color: #004b87; /* Consistent color */
+        margin: 0.75rem 0;
+    }
+
+    p,
+    span {
+        font-size: 16px; /* Match normal text size */
+        white-space: pre-line; /* Preserve whitespace */
+        margin: 0.5rem 0;
+    }
+
+    a {
+        color: #004b87; /* Ensure link color matches Xero's */
+        text-decoration: none; /* Optional: Remove underline if desired */
+    }
+
+    ul li {
+        position: relative;
+        display: block;
+        list-style-type: none;
+        padding-left: 1rem; /* Maintain list styling */
+    }
+
+
+
+	ul li:before {
+		content: url('../../../public/images/bullet.svg'); /* Ensure this path is correct */
+		margin: 0 5px 0 -10px; /* Maintain spacing */
+		position: absolute;
+		left: 0;
+		font-size: 16px; /* Replace with Xero's font size if specified */
+		color: #004b87; /* Use Xero's primary color for consistency */
+	}
+	
+	&.faqsWrap {
+		font-size: 14px; /* Adjust to match Xero's small font size */
+	
+		p,
+		span {
+			margin: 0;
+			font-size: 14px; /* Consistent with above */
+		}
+	}
+	
+	&.tableFaqsWrap {
+		font-size: 12px; /* Adjust to match Xero's extra small font size */
+	
+		p,
+		span {
+			margin: 0;
+			font-size: 12px; /* Consistent with above */
+		}
+	}
+	
+	.cursor-pointer {
+		cursor: pointer; /* No changes needed */
+	}
+	
+	.text-underline {
+		text-decoration: underline; /* No changes needed */
+	}
+	
+	.recharts-legend-wrapper {
+		li {
+			padding-bottom: 10px; /* Maintain spacing */
+		}
+	}
+}
+.property-detail-carousel {
+    .ant-carousel .slick-next {
+        right: 10px !important;
+        height: 30px;
+        width: 30px;
+    }
+
+    .ant-carousel .slick-prev {
+        left: 10px !important;
+        z-index: 1;
+        height: 30px;
+        width: 30px;
+    }
+}
+
+.manageNotificationOverrides {
+    > div {
+        user-select: none;
+        display: flex;
+
+        > label:nth-child(1) {
+            border-radius: 1rem 0 0 1rem !important; /* Maintain rounding */
+        }
+
+        > label:nth-child(2) {
+            border-radius: 0 1rem 1rem 0 !important; /* Maintain rounding */
+        }
+
+        .ant-radio-button-wrapper,
+        .ant-radio-button-wrapper-checked {
+            background-color: #004b87 !important; /* Use Xero's primary color */
+            border-color: #004b87 !important; /* Ensure consistent border color */
+            border-radius: 50px;
+
+            > span {
+                color: #ffffff; /* Xero's light color for text */
+            }
+        }
+
+        .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):before {
+            background-color: #004b87 !important; /* Primary color for checked state */
+        }
+
+        .ant-radio-button {
+            border-radius: 100% !important; /* Maintain circular buttons */
+        }
+    }
+}
+
+.react-pdf__Page {
+    min-width: unset !important;
+    min-height: unset !important;
+    width: 150px !important; /* Maintain dimensions */
+    height: 100px !important;
+}
+
+.react-pdf__Page__canvas {
+    margin: 0 auto;
+    width: 150px !important; /* Maintain dimensions */
+    height: 100px !important;
+    object-fit: cover; /* Preserve aspect ratio */
+    border-radius: 0.25rem !important; /* Consistent rounding */
+}
+
+.react-pdf__Page__annotations {
+    width: unset !important;
+    height: unset !important;
+}
+
+.ant-upload-list-item {
+    border-radius: 4px !important; /* Maintain consistent rounding */
+}
+
+button {
+    border-radius: 0.25rem !important; /* Ensure buttons have consistent rounding */
+}
+
+.infinite-scroll-wrap {
+    overflow-y: scroll !important;
+    scrollbar-gutter: stable !important;
+
+    /* Style the scrollbar */
+    &::-webkit-scrollbar {
+        width: 0.5rem !important;
+        background: transparent !important;
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+        background-color: #666666 !important; /* Use Xero's dark color for thumb */
+        border: 3px solid #666666 !important; /* Maintain border color */
+    }
+}
+
+.rbc-event {
+    background-color: #005d99 !important; /* Use Xero's secondary color for events */
+}
+
+.rdw-image-modal {
+    left: -160px !important; /* Maintain modal positioning */
+}
+
+.ant-dropdown-menu {
+    padding-top: 40px; /* Maintain dropdown menu padding */
+}

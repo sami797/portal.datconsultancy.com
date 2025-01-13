@@ -1,0 +1,52 @@
+.accordianItem {
+	& > p {
+		margin-bottom: 0;
+	}
+}
+
+.total {
+	width: 100%;
+	max-width: 300px;
+	margin-left: auto;
+	padding: 30px;
+}
+
+.total_item {
+	display: flex;
+	padding: 15px 0;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+.date_picker {
+    width: 100%;
+    margin-bottom: 10px;
+    // border: 2px solid var(--color-border-sub);
+    padding: 15px; /* Ensure padding has 'px' */
+    height: 40px; /* Optional: Set a specific height */
+    font-size: 16px; /* Adjust font size for better appearance */
+    // box-sizing: border-box; /* Ensure padding is included in the height */
+}
+.circular-select {
+	padding: 10px 0; /* Adjust vertical padding as needed */
+	// border-radius: 80%; /* Makes it circular */
+	overflow: hidden; /* Ensures the content fits within the circular shape */
+  }
+
+.z_index {
+	z-index: 10000;
+}
+
+.date_footer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 7px;
+	align-items: center;
+	padding: 20px;
+}
+
+.gen_border {
+	// border: 2px solid var(--color-border-sub);
+	// border-radius: 15px;
+}

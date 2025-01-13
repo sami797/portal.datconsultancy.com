@@ -1,0 +1,68 @@
+"use strict";
+(self["webpackChunkdat_projects"] = self["webpackChunkdat_projects"] || []).push([[2709],{
+
+/***/ 92709:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "default": () => (/* binding */ Dashboard)
+});
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(9950);
+// EXTERNAL MODULE: ./src/Components/Atoms/index.tsx + 12 modules
+var Atoms = __webpack_require__(9394);
+;// ./src/Components/Organisms/SiteSettings/Dashboard/styles.module.scss
+// extracted by mini-css-extract-plugin
+/* harmony default export */ const styles_module = ({"dashboardBody":"styles_dashboardBody__+IJjy","overview":"styles_overview__9th36","overview_cards":"styles_overview_cards__bErwW","overview_main":"styles_overview_main__Kw4bH","overview_main_full":"styles_overview_main_full__1K7CS","credit_analytics":"styles_credit_analytics__oGmBP","credit_analytics_header":"styles_credit_analytics_header__sM8H1","credit_analytics_chart_header":"styles_credit_analytics_chart_header__XYkzO","card":"styles_card__JYhwm","card_icon":"styles_card_icon__0aT12","card_content":"styles_card_content__3L36q"});
+// EXTERNAL MODULE: ./src/helpers/common.ts
+var common = __webpack_require__(88132);
+// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
+var jsx_runtime = __webpack_require__(44414);
+;// ./src/Components/Organisms/SiteSettings/Dashboard/Cards/properties-analytics.tsx
+// import { PropertyStatus } from '../../../../../helpers/commonEnums';
+const printLabel=values=>{return Intl.NumberFormat("en").format(values.value);};const renderLegend=props=>{const{payload}=props;return/*#__PURE__*/_jsx("ul",{style:{listStyle:"none",padding:"0px"},children:payload.map((entry,index)=>{var _entry$payload,_entry$payload$payloa;return/*#__PURE__*/_jsxs("li",{style:{color:entry.color},children:[/*#__PURE__*/_jsx("span",{style:{height:"15px",width:"15px",marginRight:"10px",display:"inline-block",backgroundColor:entry.color}}),/*#__PURE__*/_jsxs("span",{children:[capitalize(entry.value)," : ",entry===null||entry===void 0?void 0:(_entry$payload=entry.payload)===null||_entry$payload===void 0?void 0:(_entry$payload$payloa=_entry$payload.payload)===null||_entry$payload$payloa===void 0?void 0:_entry$payload$payloa.value]})]},"item-".concat(index));})});};const PropertiesAnalytics=_ref=>{let{property}=_ref;// get the width of the device
+const width=window.innerWidth;const chartData=property===null||property===void 0?void 0:property.map(item=>{return{name:"Unknown",value:item._count};});const COLORS=["rgb(230, 138, 0)","var(--color-green-yp)","#B7C4CF","var(--color-blue-yp)"];return/*#__PURE__*/_jsxs("div",{className:styles.credit_analytics,children:[/*#__PURE__*/_jsxs("div",{className:styles.credit_analytics_header,children:[/*#__PURE__*/_jsx(Typography,{color:'dark-main',size:'md',children:"Properties Analytics"}),/*#__PURE__*/_jsx(Typography,{color:"dark-sub",size:'sm',className:"mt-3 mb-4",children:"This is a summary of the properties by status"})]}),/*#__PURE__*/_jsx("div",{className:styles.credit_analytics_chart,children:/*#__PURE__*/_jsx("div",{children:/*#__PURE__*/_jsx(ResponsiveContainer,{width:"100%",height:width>767?250:400,children:/*#__PURE__*/_jsxs(PieChart,{children:[/*#__PURE__*/_jsx(Legend,{layout:"vertical",align:width>767?"left":"center",verticalAlign:width>767?"middle":"bottom",content:renderLegend,wrapperStyle:{marginLeft:width>767?"3rem":"0px"}}),/*#__PURE__*/_jsx(Pie,{label:printLabel,labelLine:false,data:chartData,innerRadius:60,outerRadius:80,paddingAngle:2,cx:width>767?"55%":"50%",dataKey:"value",children:chartData.map((entry,index)=>/*#__PURE__*/_jsx(Cell,{fill:COLORS[index%COLORS.length]},"cell-".concat(index)))})]})})})})]});};/* harmony default export */ const properties_analytics = ((/* unused pure expression or super */ null && (PropertiesAnalytics)));
+;// ./src/Components/Organisms/SiteSettings/Dashboard/Cards/with-icon.tsx
+const CardWithIcon=_ref=>{let{title,subtitle,description,icon,lightSubtitle}=_ref;return/*#__PURE__*/(0,jsx_runtime.jsxs)("div",{className:styles_module.card,children:[/*#__PURE__*/(0,jsx_runtime.jsxs)("div",{className:styles_module.card_content,children:[/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* Typography */.o5,{color:"dark-main",size:"xl",weight:"bold",children:"".concat(title)}),/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* Typography */.o5,{color:lightSubtitle?"dark-sub":"dark-main",type:"h5",weight:"semi",className:"mt-8",children:subtitle}),/*#__PURE__*/(0,jsx_runtime.jsx)("p",{className:"font-size-xs color-dark-sub mb-0",children:description})]}),/*#__PURE__*/(0,jsx_runtime.jsx)("div",{className:styles_module.card_icon,children:icon})]});};/* harmony default export */ const with_icon = (CardWithIcon);
+;// ./src/Components/Organisms/SiteSettings/Dashboard/Cards/index.ts
+
+// EXTERNAL MODULE: ./src/Components/Icons/index.tsx + 58 modules
+var Icons = __webpack_require__(63668);
+// EXTERNAL MODULE: ./src/Modules/User/index.ts
+var User = __webpack_require__(47645);
+// EXTERNAL MODULE: ./src/Components/Organisms/Skeletons/index.tsx
+var Skeletons = __webpack_require__(70619);
+// EXTERNAL MODULE: ./src/Components/Templates/SiteSettings/index.tsx
+var SiteSettings = __webpack_require__(16181);
+// EXTERNAL MODULE: ./node_modules/react-router-dom/dist/index.js
+var dist = __webpack_require__(42074);
+;// ./src/Components/Organisms/SiteSettings/Dashboard/index.tsx
+// import NotificationModal from '../../NotificationModal';
+const DashboardOverview=()=>{var _moduleData$data,_moduleData$data$tran,_moduleData$data$tran2,_moduleData$data2,_moduleData$data2$tra,_moduleData$data2$tra2,_moduleData$data3,_moduleData$data3$tra,_moduleData$data3$tra2,_moduleData$data4,_moduleData$data4$cre,_moduleData$data4$cre2,_moduleData$data5,_moduleData$data5$cre,_moduleData$data5$cre2,_moduleData$data6,_moduleData$data6$cre,_moduleData$data6$cre2,_moduleData$data7,_moduleData$data8,_moduleData$data9,_moduleData$data10,_moduleData$data11,_moduleData$data12,_moduleData$data13,_moduleData$data14,_moduleData$data15,_moduleData$data16,_moduleData$data17,_moduleData$data18,_moduleData$data19;const width=window.innerWidth;const module=(0,react.useMemo)(()=>new User/* UserModule */.U(),[]);const[moduleData,setModuleData]=(0,react.useState)({loading:true,data:{},error:null});// const GetSiteStats = useCallback(() => {
+//     module.getYallahDashboardStats().then((res) => {
+//         setModuleData({
+//             ...moduleData,
+//             loading: false,
+//             data: res.data.data,
+//         });
+//     }).catch((err) => {
+//         setModuleData({
+//             ...moduleData,
+//             loading: false,
+//             error: err.response?.data?.message || 'Something went wrong',
+//         });
+//     })
+// }, [module, moduleData])
+// useEffect(() => {
+//     GetSiteStats()
+// }, [])
+return/*#__PURE__*/(0,jsx_runtime.jsx)(SiteSettings["default"],{className:styles_module.dashboardBody,children:/*#__PURE__*/(0,jsx_runtime.jsxs)("div",{children:[/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* Typography */.o5,{color:"dark-main",size:"lg",weight:"semi",className:"ml-10 mb-4",children:"Site  Overview"}),/*#__PURE__*/(0,jsx_runtime.jsx)("div",{className:styles_module.overview,children:moduleData.loading?/*#__PURE__*/(0,jsx_runtime.jsx)(Skeletons/* default */.A,{items:4}):/*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment,{children:[/*#__PURE__*/(0,jsx_runtime.jsxs)("div",{className:styles_module.overview_cards,children:[((_moduleData$data=moduleData.data)===null||_moduleData$data===void 0?void 0:(_moduleData$data$tran=_moduleData$data.transaction)===null||_moduleData$data$tran===void 0?void 0:(_moduleData$data$tran2=_moduleData$data$tran._sum)===null||_moduleData$data$tran2===void 0?void 0:_moduleData$data$tran2.amount)!==null&&((_moduleData$data2=moduleData.data)===null||_moduleData$data2===void 0?void 0:(_moduleData$data2$tra=_moduleData$data2.transaction)===null||_moduleData$data2$tra===void 0?void 0:(_moduleData$data2$tra2=_moduleData$data2$tra._sum)===null||_moduleData$data2$tra2===void 0?void 0:_moduleData$data2$tra2.amount)!==undefined&&/*#__PURE__*/(0,jsx_runtime.jsx)(dist/* Link */.N_,{to:"/orders",children:/*#__PURE__*/(0,jsx_runtime.jsx)(with_icon,{title:(_moduleData$data3=moduleData.data)===null||_moduleData$data3===void 0?void 0:(_moduleData$data3$tra=_moduleData$data3.transaction)===null||_moduleData$data3$tra===void 0?void 0:(_moduleData$data3$tra2=_moduleData$data3$tra._sum)===null||_moduleData$data3$tra2===void 0?void 0:_moduleData$data3$tra2.amount,subtitle:"Transactions this month",icon:/*#__PURE__*/(0,jsx_runtime.jsx)(Icons/* NetworkIcon */.wp,{width:50,height:50})})}),((_moduleData$data4=moduleData.data)===null||_moduleData$data4===void 0?void 0:(_moduleData$data4$cre=_moduleData$data4.creditsHistory)===null||_moduleData$data4$cre===void 0?void 0:(_moduleData$data4$cre2=_moduleData$data4$cre._sum)===null||_moduleData$data4$cre2===void 0?void 0:_moduleData$data4$cre2.creditsUsed)!==null&&((_moduleData$data5=moduleData.data)===null||_moduleData$data5===void 0?void 0:(_moduleData$data5$cre=_moduleData$data5.creditsHistory)===null||_moduleData$data5$cre===void 0?void 0:(_moduleData$data5$cre2=_moduleData$data5$cre._sum)===null||_moduleData$data5$cre2===void 0?void 0:_moduleData$data5$cre2.creditsUsed)!==undefined&&/*#__PURE__*/(0,jsx_runtime.jsx)(dist/* Link */.N_,{to:"/credits/history",children:/*#__PURE__*/(0,jsx_runtime.jsx)(with_icon,{title:(_moduleData$data6=moduleData.data)===null||_moduleData$data6===void 0?void 0:(_moduleData$data6$cre=_moduleData$data6.creditsHistory)===null||_moduleData$data6$cre===void 0?void 0:(_moduleData$data6$cre2=_moduleData$data6$cre._sum)===null||_moduleData$data6$cre2===void 0?void 0:_moduleData$data6$cre2.creditsUsed,subtitle:"Credits spent this month",icon:/*#__PURE__*/(0,jsx_runtime.jsx)(Icons/* NetworkIcon */.wp,{width:50,height:50})})}),((_moduleData$data7=moduleData.data)===null||_moduleData$data7===void 0?void 0:_moduleData$data7.activePackages)!==null&&((_moduleData$data8=moduleData.data)===null||_moduleData$data8===void 0?void 0:_moduleData$data8.activePackages)!==undefined&&/*#__PURE__*/(0,jsx_runtime.jsx)(dist/* Link */.N_,{to:"/orders",children:/*#__PURE__*/(0,jsx_runtime.jsx)(with_icon,{title:moduleData.data.activePackages,subtitle:"Active packages",icon:/*#__PURE__*/(0,jsx_runtime.jsx)(Icons/* ClipboardTagIcon */.u1,{width:50,height:50})})}),((_moduleData$data9=moduleData.data)===null||_moduleData$data9===void 0?void 0:_moduleData$data9.organization)!==null&&((_moduleData$data10=moduleData.data)===null||_moduleData$data10===void 0?void 0:_moduleData$data10.organization)!==undefined&&/*#__PURE__*/(0,jsx_runtime.jsx)(dist/* Link */.N_,{to:"/siteSettings/organization",children:/*#__PURE__*/(0,jsx_runtime.jsx)(with_icon,{title:(_moduleData$data11=moduleData.data)===null||_moduleData$data11===void 0?void 0:_moduleData$data11.organization,subtitle:"Total organization",icon:/*#__PURE__*/(0,jsx_runtime.jsx)(Icons/* HouseVerifyIcon */.Vp,{width:50,height:50})})})]}),/*#__PURE__*/(0,jsx_runtime.jsxs)("div",{className:styles_module.overview_cards,children:[((_moduleData$data12=moduleData.data)===null||_moduleData$data12===void 0?void 0:_moduleData$data12.verifiedAgents)!==null&&((_moduleData$data13=moduleData.data)===null||_moduleData$data13===void 0?void 0:_moduleData$data13.verifiedAgents)!==undefined&&/*#__PURE__*/(0,jsx_runtime.jsx)(dist/* Link */.N_,{to:"/siteSettings/user",children:/*#__PURE__*/(0,jsx_runtime.jsx)(with_icon,{title:moduleData.data.verifiedAgents,subtitle:"Total agents",icon:/*#__PURE__*/(0,jsx_runtime.jsx)(Icons/* ClipboardIcon */.ui,{width:50,height:50}),lightSubtitle:true})}),((_moduleData$data14=moduleData.data)===null||_moduleData$data14===void 0?void 0:_moduleData$data14.activeUsers)!==null&&((_moduleData$data15=moduleData.data)===null||_moduleData$data15===void 0?void 0:_moduleData$data15.activeUsers)!==undefined&&/*#__PURE__*/(0,jsx_runtime.jsx)(dist/* Link */.N_,{to:"/siteSettings/user",children:/*#__PURE__*/(0,jsx_runtime.jsx)(with_icon,{title:moduleData.data.activeUsers,subtitle:"Total users",icon:/*#__PURE__*/(0,jsx_runtime.jsx)(Icons/* ClipboardIcon */.ui,{width:50,height:50}),lightSubtitle:true})}),((_moduleData$data16=moduleData.data)===null||_moduleData$data16===void 0?void 0:_moduleData$data16.leads)!==null&&((_moduleData$data17=moduleData.data)===null||_moduleData$data17===void 0?void 0:_moduleData$data17.leads)!==undefined&&/*#__PURE__*/(0,jsx_runtime.jsx)(dist/* Link */.N_,{to:"/siteSettings/leads",children:/*#__PURE__*/(0,jsx_runtime.jsx)(with_icon,{title:moduleData.data.leads,subtitle:"Total leads",icon:/*#__PURE__*/(0,jsx_runtime.jsx)(Icons/* ClipboardTagIcon */.u1,{width:50,height:50}),lightSubtitle:true})}),((_moduleData$data18=moduleData.data)===null||_moduleData$data18===void 0?void 0:_moduleData$data18.reviews)!==null&&((_moduleData$data19=moduleData.data)===null||_moduleData$data19===void 0?void 0:_moduleData$data19.reviews)!==undefined&&/*#__PURE__*/(0,jsx_runtime.jsx)(dist/* Link */.N_,{to:"/siteSettings/user-ratings",children:/*#__PURE__*/(0,jsx_runtime.jsx)(with_icon,{title:moduleData.data.reviews,subtitle:"Reviews this month",icon:/*#__PURE__*/(0,jsx_runtime.jsx)(Icons/* FeedbackIcon */.hj,{width:50,height:50}),lightSubtitle:true})})]})]})})]})});};/* harmony default export */ const Dashboard = (DashboardOverview);
+
+/***/ })
+
+}]);

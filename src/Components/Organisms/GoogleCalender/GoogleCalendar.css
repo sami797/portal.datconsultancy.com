@@ -1,0 +1,240 @@
+/* GoogleCalendar.css
+
+/* General Styles */
+/* Change the size of the month title */
+.fc-toolbar-title {
+  font-size: 0.2em; /* Increase or decrease the size as needed */
+  font-weight: bold;
+  color: #333; /* Optional: Change the color */
+}
+
+/* Style the Today button */
+/* GoogleCalendar.css */
+
+/* Adjust the size of the "Today" button */
+.fc-today-button {
+  font-size: 12px; /* Change the size as needed */
+  padding: 5px 10px; /* Adjust padding for a smaller button */
+  background-color: #4CAF50; /* Optional: change the button color */
+  border-radius: 4px; /* Optional: rounded corners */
+  color: white; /* Optional: text color */
+}
+
+/* Adjust the size of other buttons as well, if needed */
+.fc-button {
+  font-size: 12px;
+  padding: 5px 10px;
+}
+/* GoogleCalendar.css */
+
+/* Adjust the size of the month title */
+.fc-toolbar-title {
+  font-size: 24px; /* Change the size as needed */
+  font-weight: bold; /* Optional: make the title bold */
+  color: #333; /* Optional: change the color */
+}
+
+
+.fc-button.fc-button-today:hover {
+  background-color: #0056b3; /* Darken on hover */
+  border-color: #0056b3; /* Darken on hover */
+}
+
+/* Optional: Style other buttons similarly if needed */
+.fc-button {
+  font-size: 0.9em; /* Make the text smaller */
+  padding: 5px 10px; /* Adjust the padding */
+}
+
+.fc-toolbar {
+  background-color:mediumseagreen; /* Darker shade for toolbar */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.fc-toolbar-title {
+  font-size: 0.5em;
+ 
+  font-weight: bold;
+}
+
+
+/* Header Styles */
+.fc-button {
+  background-color: #4caf50; /* Medium sea green */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  transition: background-color 0.3s ease;
+  
+}
+
+.fc-button:hover {
+  background-color: #388e3c; /* Darker green on hover */
+}
+
+.fc-button:active {
+  
+  background-color: white; /* Different color when active */
+}
+
+/* Calendar Grid Styles */
+.fc-daygrid-day {
+  border: 0.5px solid #d1d5db; /* Slightly lighter border for a softer look */
+  border-radius: 6px; /* Slightly more rounded corners */
+  background-color: #ffffff; /* White background for a clean look */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Added transform for a subtle zoom effect on hover */
+}
+
+.fc-daygrid-day:hover {
+  background-color: #f3f7fa; /* Even lighter background on hover for better contrast */
+  transform: scale(1.02); /* Slight zoom on hover for interactivity */
+}
+
+.fc-daygrid-day-number {
+  color: #111827; /* Darker text color for better readability */
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.fc-daygrid-day-top {
+  background-color: #f4fdf4; /* Subtle green tint for the top bar */
+  border-bottom: 0.5px solid #d1d5db;
+  color: #388e3c; /* Slightly darker green for a more elegant look */
+  padding: 4px 0; /* Add some padding for spacing */
+}
+
+/* Event Styles */
+.fc-event {
+  background-color: #388e3c; /* Darker green for a more professional look */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px; /* Slightly less rounded for a more formal appearance */
+  padding: 6px 8px; /* Increase padding for better spacing */
+  font-size: 0.8em; /* Slightly larger font for readability */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for a modern, elevated look */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.fc-event:hover {
+  background-color: #2e7d32; /* Slightly darker green on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* More prominent shadow on hover */
+}
+
+
+.fc-event:hover {
+  background-color: #388e3c; /* Darker green on hover */
+}
+
+/* Tooltip Styles */
+.tooltip {
+  position: absolute;
+  background-color: #ffffff;
+  border: 0.5px solid #d1d5db;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(126, 122, 122, 0.1);
+  z-index: 1000;
+} */
+
+.tooltip h2 {
+  margin-top: 0;
+  font-size: 1.2em;
+  color: #1f2937;
+}
+
+.tooltip p {
+  margin: 4px 0;
+  color: #374151;
+}
+
+.tooltip a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.tooltip a:hover {
+  text-decoration: underline;
+}
+.parent-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Optional: centers the button vertically as well */
+}
+
+/* Google Login Button */
+.login-with-google-btn {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  padding: 12px 16px 12px 34px;
+  border: none;
+  margin-top: 30px;
+  
+  
+  border-radius: 3px;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
+  color: #757575;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: 12px 11px;
+}
+
+.login-with-google-btn:hover {
+  box-shadow: 0 -1px 0 rgba(233, 229, 229, 0.04), 0 2px 4px rgba(233, 227, 227, 0.25);
+  background-color: #f1f1f1;
+}
+
+.login-with-google-btn:active {
+  background-color: #eeeeee;
+}
+
+/* Style for the FullCalendar Navigation Arrows */
+.fc .fc-prev-button,
+.fc .fc-next-button {
+  border-radius: 50%; /* Circular buttons */
+  width: 36px; /* Width of the button */
+  height: 36px; /* Height of the button */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: mediumseagreen; /* Blue background */
+  color: rgb(253, 244, 244); /* White text */
+  border: none; /* No border */
+  font-size: 18px; /* Font size */
+  margin: 0 8px; /* Margin on both sides */
+
+}
+
+ .fc .fc-prev-button:hover,
+.fc .fc-next-button:hover {
+  background-color: mediumseagreen; /* Darker blue on hover */
+}
+
+.fc .fc-prev-button:active,
+.fc .fc-next-button:active {
+  background-color: mediumseagreen; /* Even darker blue when active */
+} 
+/* Style for the "Today" Button */
+.fc .fc-today-button {
+  background-color: #4caf50; /* Medium sea green */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  transition: background-color 0.3s ease;
+}
+
+.fc .fc-today-button:hover {
+  background-color: #388e3c; /* Darker green on hover */
+}
+
+.fc .fc-today-button:active {
+  background-color: #ffffff; /* Even darker green when active */
+}
+

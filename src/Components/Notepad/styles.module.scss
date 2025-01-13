@@ -1,0 +1,128 @@
+.notePad {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 6px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(148, 192, 139, 0.1);
+  background-color: #ffffff;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.inputSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: none;
+  font-size: 16px;
+}
+
+.saveButton {
+  align-self: flex-end;
+  padding: 4px 25px;
+  border: none;
+  border-radius: 4px;
+  background-color: mediumseagreen;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.saveButton:hover {
+  align-self: flex-end;
+  padding: 4px 25px;
+  border: none;
+  border-radius: 4px;
+  background-color: green;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  
+
+}
+
+.notesList {
+  margin-top: 30px;
+}
+
+.noteItem {
+  margin-bottom: 15px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.noteActions {
+  display: flex;
+  gap: 10px;
+}
+
+.editButton, .deleteButton {
+  padding: 5px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  background-color: mediumseagreen;
+}
+.editIcon {
+  cursor: pointer;
+  margin-right: 10px; /* Optional: adds spacing between icons */
+  color: #4CAF50; /* Optional: customize the icon color */
+}
+
+.deleteIcon {
+  cursor: pointer;
+  color: #F44336; /* Optional: customize the icon color */
+}
+
+
+.editButton {
+  padding: 5px 12px;
+  background-color:  mediumseagreen;
+  color: #fff;
+  padding: 4px 15px;
+  margin-bottom: 15px;
+}
+
+.editButton:hover {
+  background-color: mediumaquamarine;
+}
+
+.deleteButton {
+  background-color: #dc3545;
+  color: #fff;
+  padding: 4px 15px;
+  margin-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+.deleteButton:hover {
+  background-color: #c82333;
+
+}
+
+.noteContent {
+  margin: 0;
+}
