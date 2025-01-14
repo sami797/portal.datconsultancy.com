@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 // Change BASE_URL to your server's URL.
- export const BASE_URL = "https://api.portal.datconsultancy.com/";
-//export const BASE_URL = 'http://localhost:5569/';
+ //export const BASE_URL = "https://api.portal.datconsultancy.com/";
+export const BASE_URL = 'http://localhost:5569/';
 // Main API instance
 const instance = axios.create({
   baseURL: BASE_URL,
