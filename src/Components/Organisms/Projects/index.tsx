@@ -32,8 +32,21 @@ import styles from "../Common/styles.module.scss";
 import ComponentStyles from "./styles.module.scss";
 import { QueryType } from "@modules/Common/common.interface";
 import { CardShimmer } from "@atoms/CardShimmer";
-import apiInstance from '@services/axiosInstance';
+import { TablePaginationConfig } from 'antd/es/table';
 
+import apiInstance from '@services/axiosInstance';
+import Select from "antd/es/select";
+import { Option } from "antd/lib/mentions";
+interface Project {
+  title: string;
+  referenceNumber: string;
+  [key: string]: any;  // For additional properties in your project
+}
+
+interface Sorter {
+  field: string;
+  order: "ascend" | "descend";
+}
 const breadCrumbsData = [
   {
     text: "Home",
@@ -112,6 +125,10 @@ const AllProjects: FC = () => {
     }
     return "grid";
   })
+  const [sortField, setSortField] = useState<keyof ProjectTypes>('title'); 
+ 
+  const [sortOrder, setSortOrder] = useState<'ascend' | 'descend'>('ascend'); 
+
   const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
   const [moreFilters, setMoreFilters] = useState<CheckboxValueType[]>([]);
   const [selectedFilters, setSelectedFilters] = useState<SelectedFiltersTypes>({
@@ -157,7 +174,44 @@ const AllProjects: FC = () => {
     method: projectStateModule.getPublishedRecords,
     initialQuery: { perPage: 100 }
   });
+  const sortData = (data: ProjectTypes[], sortField: keyof ProjectTypes, sortOrder: 'ascend' | 'descend'): ProjectTypes[] => {
+    return data.sort((a, b) => {
+      const aValue = a[sortField];
+      const bValue = b[sortField];
+  
+      // Ensure aValue and bValue are not undefined
+      if (aValue === undefined || bValue === undefined) {
+        return 0; // or handle according to your preference
+      }
+  
+      if (sortOrder === 'ascend') {
+        return aValue < bValue ? -1 : aValue > bValue ? 1 : 0;
+      } else {
+        return aValue > bValue ? -1 : aValue < bValue ? 1 : 0;
+      }
+    });
+  };
+  
 
+  const handleSortChange = (value: 'ascend' | 'descend') => {
+    setSortOrder(value);
+  };
+
+  // Handle table change (pagination, filters, sorting)
+  const handleTableChange = (
+    pagination: TablePaginationConfig,
+    filters: Record<string, string[]>,
+    sorter: Sorter
+  ): void => {
+    const { field, order } = sorter;
+  
+    // Cast field to a valid key of ProjectTypes
+    if (field) {
+      setSortField(field as keyof ProjectTypes); // Cast 'field' to keyof ProjectTypes
+    }
+    
+    setSortOrder(order);
+  };
   
   useEffect(() => {
     let combinedProjects: ProjectTypes[] = [];
@@ -450,6 +504,16 @@ const AllProjects: FC = () => {
                 </>
               ) : (
                 <>
+                    <div>
+                    <Select
+                      defaultValue="ascend"
+                      style={{ width: 150 }}
+                      onChange={handleSortChange}
+                    >
+                      <Option value="ascend">A to Z</Option>
+                      <Option value="descend">Z to A</Option>
+                    </Select>
+                  </div>
                   <div>
                     <CustomInput
                       placeHolder="Search by title or reference number"
@@ -457,6 +521,7 @@ const AllProjects: FC = () => {
                       value={titleTerm}
                     />
                   </div>
+                  
                   <div>
                     <CustomFilter
                       type="radio"
@@ -601,20 +666,24 @@ const AllProjects: FC = () => {
                 {projectViewAs === "table" ? (
                   <ProjectTable
                     data={{
-                      allProjects: data!,
+                      allProjects: sortData(data!, sortField, sortOrder) as ProjectTypes[],
                       onRefresh: onUpdate as any,
+                      
                       projectStates: projectStates!,
                     }}
+                    
                     permissions={permissions}
                     rowSelection={{
                       selectedRowKeys,
                       onChange: setSelectedRowKeys,
                     }}
+      
                   />
+                  
                 ) : (
                   <ProjectsCard
                     data={{
-                      allProjects: projects!,
+                      allProjects: sortData(projects!, sortField, sortOrder) as ProjectTypes[],
                       onRefresh: onUpdate as any,
                       projectStates: projectStates!,
                     }}
