@@ -174,7 +174,7 @@ const AllProjects: FC = () => {
     method: projectStateModule.getPublishedRecords,
     initialQuery: { perPage: 100 }
   });
-  const sortData = (data: ProjectTypes[], sortField: keyof ProjectTypes, sortOrder: 'ascend' | 'descend'): ProjectTypes[] => {
+  const sortData = (data: ProjectTypes[] = [], sortField: keyof ProjectTypes, sortOrder: 'ascend' | 'descend'): ProjectTypes[] => {
     return data.sort((a, b) => {
       const aValue = a[sortField];
       const bValue = b[sortField];
@@ -205,13 +205,12 @@ const AllProjects: FC = () => {
   ): void => {
     const { field, order } = sorter;
   
-    // Cast field to a valid key of ProjectTypes
-    if (field) {
+    if (field && order) {
       setSortField(field as keyof ProjectTypes); // Cast 'field' to keyof ProjectTypes
+      setSortOrder(order);
     }
-    
-    setSortOrder(order);
   };
+  
   
   useEffect(() => {
     let combinedProjects: ProjectTypes[] = [];

@@ -1,105 +1,206 @@
+/* Base Overlay Styling */
 .overlay {
-	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-	position: relative;
-	max-height: 50vh;
-	overflow-y: auto;
-	margin-top: 10px;
-	border-radius: 5px;
-	padding: 1rem;
-	margin-left: 1rem;
-
-	@media (min-width: 650px) {
-		right: 0.1rem;
-		position: absolute;
-		width: 30rem;
-	}
-
-	&::-webkit-scrollbar {
-		width: 2px;
-	}
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1), 0 4px 25px rgba(0, 0, 0, 0.05); /* Luxurious soft shadows */
+    position: relative;
+    max-height: 50vh;
+    overflow-y: auto;
+    margin-top: 10px;
+    border-radius: 12px; /* Rounded corners for smoothness */
+    padding: 1.5rem;
+    margin-left: 1rem;
+    background: linear-gradient(145deg, #ffffff, #f7f7f7); /* Soft gradient background */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
 }
 
+.overlay:hover {
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), 0 4px 35px rgba(0, 0, 0, 0.07); /* Subtle lift effect */
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+@media (min-width: 650px) {
+    .overlay {
+        right: 0.1rem; /* This was moved inside the correct block */
+        position: absolute;
+        width: 30rem;
+    }
+}
+
+/* Custom Scrollbar */
+.overlay::-webkit-scrollbar {
+    width: 6px;
+}
+
+.overlay::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+.overlay::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+/* Overlay Item Styling */
 .overlay_item {
-	display: flex;
-	align-items: center;
-	padding: 0.7rem 1.5rem;
-
-	&:hover {
-		background-color: var(--color-inactive);
-		cursor: pointer;
-	}
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem; /* Increased padding for comfort */
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
 }
 
+.overlay_item:hover {
+    background-color: #f0f0f5; /* Elegant hover color */
+    cursor: pointer;
+}
+
+.overlay_item:active {
+    background-color: #e0e0e5; /* Slightly darker active state */
+}
+
+/* Icon Styling (For the .anticon class) */
 .anticon {
-	height: 1.75rem;
-	aspect-ratio: 1;
-	background: var(--color-primary-main);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 5px;
-	margin-right: 0.8rem;
-
-	svg {
-		fill: var(--color-light);
-	}
+    height: 2rem;
+    aspect-ratio: 1;
+    background: linear-gradient(145deg, #3498db, #2980b9); /* Beautiful gradient background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Circle icon */
+    margin-right: 1rem;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
+.anticon:hover {
+    background: linear-gradient(145deg, #2980b9, #3498db); /* Reverse gradient on hover */
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+.anticon svg {
+    fill: #ffffff; /* Clean white color for the icons */
+}
+
+/* Overlay Page Styling */
 .overlay_page {
-	border-radius: 5px;
-	padding: 1rem;
-	max-height: 360px;
-	overflow: auto;
-	width: calc(50% - 0.5rem);
-
-	@media (max-width: 1024px) {
-		height: 100%;
-	}
-
-	@media (max-width: 575px) {
-		width: 100%;
-		margin-bottom: 0.5rem;
-	}
+    border-radius: 12px;
+    padding: 1.5rem;
+    max-height: 360px;
+    overflow: auto;
+    width: calc(50% - 1rem);
+    background: #ffffff; /* Clean white background */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
+@media (max-width: 1024px) {
+    .overlay_page {
+        height: 100%;
+    }
+}
+
+@media (max-width: 575px) {
+    .overlay_page {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Notification Image Styling */
 .notificationImage {
-	// border: 1px solid #f2f2f2;
-	width: 50px;
-	min-width: 50px;
-	height: 50px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	// border-radius: 50%;
-	overflow: hidden;
-
-	img {
-		display: inline-block;
-		object-fit: cover;
-		height: 50px;
-		width: 50px;
-	}
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; /* Circle images */
+    overflow: hidden;
+    margin-right: 1rem;
+    background: linear-gradient(145deg, #ff4b5c, #ff6a72); /* Soft gradient border */
 }
 
+.notificationImage img {
+    display: inline-block;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%; /* Ensure image is also circular */
+}
+
+/* Mail Icon Styling */
 .mailIcon {
-	width: 50px;
-	min-width: 50px;
-	height: 50px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	img {
-		display: inline-block;
-		object-fit: contain;
-		height: 50px;
-		width: 50px;
-	}
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ecf0f1; /* Light background for icon */
+    border-radius: 50%; /* Circle icon container */
+    overflow: hidden;
 }
 
+.mailIcon img {
+    display: inline-block;
+    object-fit: contain;
+    height: 60px;
+    width: 60px;
+    transition: transform 0.3s ease; /* Smooth zoom on hover */
+}
+
+.mailIcon:hover img {
+    transform: scale(1.1); /* Zoom effect on hover */
+}
+
+/* Notification Content Styling */
 .notificationContent {
-	display: flex;
-	margin: 0.5rem 0;
-	align-items: center;
-	justify-content: space-between;
+    display: flex;
+    margin: 0.5rem 0;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 1rem;
+    color: #333333; /* Dark text for readability */
+}
+
+.notificationContent span {
+    color: #7f8c8d; /* Soft color for timestamps or less important text */
+    font-size: 0.9rem;
+}
+
+.notificationContent .notificationTitle {
+    font-weight: bold;
+    color: #2c3e50; /* Slightly darker text for emphasis */
+}
+
+.notificationContent .notificationMessage {
+    color: #95a5a6;
+}
+
+/* Smooth Animations on Notification Content */
+.notificationContent {
+    transition: background 0.3s ease;
+}
+
+.notificationContent:hover {
+    background: #f7f7f7; /* Subtle hover effect */
+    border-radius: 8px; /* Slight rounding on hover */
+}
+
+/* Add media query for responsiveness */
+@media (max-width: 575px) {
+    .overlay {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .overlay_page {
+        width: 100%;
+    }
+
+    .notificationImage {
+        width: 50px;
+        height: 50px;
+    }
+
+    .mailIcon {
+        width: 50px;
+        height: 50px;
+    }
 }

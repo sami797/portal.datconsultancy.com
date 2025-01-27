@@ -1,7 +1,7 @@
 .dashboardBody {
 	width: 100vw;
 	height: calc(100vh - 3.6rem);
-	background-color: #f5f5f5 !important;
+	background: linear-gradient(135deg, #e0e0e0, #f5f5f5); 
 }
 
 .overview {
@@ -16,48 +16,97 @@
 }
 
 .card {
-	height: 120px;
+    position: relative;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0); /* Soft gradient background for cards */
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1), 0px 2px 6px rgba(0, 0, 0, 0.05); /* Elegant shadow */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem; /* Increased padding for luxury feel */
+    width: 100%;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for hover effects */
 
-	@media (max-width: 575px) {
-		height: 100px;
-	}
+    &:hover {
+        box-shadow: 0px 8px 16px rgba(19, 119, 73, 0.15), 0px 4px 12px rgba(0, 0, 0, 0.1); /* Enhanced hover shadow */
+        transform: translateY(-5px); /* Slight lift effect on hover */
+    }
+
+    @media (max-width: 575px) {
+        margin-bottom: 0.5rem;
+    }
+}
+.card_icon {
+    position: absolute;
+    right: 1.5rem;
+    opacity: 0.6;
+    transition: opacity 0.3s ease; /* Smooth icon opacity transition */
 }
 
+.card_icon:hover {
+    opacity: 1;
+    transform: scale(1.1); /* Icon enlargement on hover */
+}
+
+.card_icon svg {
+    fill: #2c3e50; /* Dark icon color for elegance */
+}
+
+.card_content {
+    width: 100%;
+    height: max-content;
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Clean, modern font */
+    color: #333333; /* Dark text for readability */
+    font-size: 1.125rem; /* Slightly larger text for luxury appeal */
+    letter-spacing: 0.5px; /* Subtle letter spacing for elegance */
+}
+
+.card_title {
+    font-family: 'Georgia', serif; /* Elegant serif font for titles */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50; /* Dark title color */
+}
+
+.card_subtitle {
+    font-size: 1rem;
+    color: #7f8c8d; /* Softer subtitle color */
+    margin-top: 0.25rem;
+}
 .overview_cards {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
-	gap: 1rem;
-	width: 100%;
-	margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Ensuring 4 cards per row */
+    gap: 1.5rem;
+    width: 100%;
+    margin-bottom: 2rem; /* Spacing between card sections */
 
-	@media (max-width: 1280px) {
-		row-gap: 0.5rem;
-		column-gap: 0.5rem;
-		grid-template-columns: 1fr 1fr;
-	}
+    @media (max-width: 1280px) {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+    }
 
-	@media (max-width: 575px) {
-		row-gap: 0.5rem;
-		column-gap: 0.5rem;
-		grid-template-columns: 1fr;
-	}
+    @media (max-width: 575px) {
+        grid-template-columns: 1fr; /* 1 column on very small screens */
+        row-gap: 1rem;
+        column-gap: 0.5rem;
+    }
 }
 
 .overview_main {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 1rem;
-	margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two-column layout */
+    gap: 1.5rem;
+    margin-bottom: 2rem;
 
-	@media (max-width: 575px) {
-		grid-template-columns: 1fr;
-	}
+    @media (max-width: 575px) {
+        grid-template-columns: 1fr; /* Single column layout on small screens */
+    }
 }
 
+
 .overview_main_full {
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .cards {
@@ -69,6 +118,33 @@
 	@media (max-width: 575px) {
 		display: inline-block;
 	}
+}
+.card_content {
+    padding: 1.5rem; /* Added padding for a more spacious layout */
+}
+
+.card_title {
+    margin-bottom: 0.5rem;
+    font-size: 1.75rem; /* Larger title for emphasis */
+}
+
+.card_subtitle {
+    font-size: 1.125rem;
+    color: #95a5a6; /* Subtle color for less emphasis on subtitles */
+}
+
+/* Ensure 4 cards per row horizontally on large screens */
+@media (min-width: 768px) {
+    .overview_cards {
+        grid-template-columns: repeat(4, 1fr); /* 4 cards per row on medium and larger screens */
+    }
+}
+
+/* For smaller screens, adjust the layout accordingly */
+@media (max-width: 575px) {
+    .overview_cards {
+        grid-template-columns: 1fr; /* 1 column on smaller screens */
+    }
 }
 
 .card {
