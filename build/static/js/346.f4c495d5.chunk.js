@@ -42,8 +42,8 @@ var es_image = __webpack_require__(9206);
 var upload = __webpack_require__(28013);
 // EXTERNAL MODULE: ./node_modules/antd/es/button/index.js
 var es_button = __webpack_require__(48538);
-// EXTERNAL MODULE: ./node_modules/antd/es/mentions/index.js + 8 modules
-var mentions = __webpack_require__(7817);
+// EXTERNAL MODULE: ./node_modules/antd/es/mentions/index.js
+var mentions = __webpack_require__(22033);
 // EXTERNAL MODULE: ./node_modules/antd/es/drawer/index.js + 6 modules
 var drawer = __webpack_require__(73780);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js

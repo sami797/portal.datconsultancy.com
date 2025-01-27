@@ -22,7 +22,7 @@ var Atoms = __webpack_require__(9394);
 var Icons = __webpack_require__(63668);
 ;// ./src/Components/Organisms/Dashboard/Overview/styles.module.scss
 // extracted by mini-css-extract-plugin
-/* harmony default export */ const styles_module = ({"dashboardBody":"styles_dashboardBody__v5dCv","overview":"styles_overview__Uub8N","card":"styles_card__kBcc5","overview_cards":"styles_overview_cards__Y8cJd","overview_main":"styles_overview_main__c7EGh","overview_main_full":"styles_overview_main_full__FKMPx","cards":"styles_cards__wZVT0","card_icon":"styles_card_icon__jjy3e","card_content":"styles_card_content__ARTfy"});
+/* harmony default export */ const styles_module = ({"dashboardBody":"styles_dashboardBody__v5dCv","overview":"styles_overview__Uub8N","card":"styles_card__kBcc5","card_icon":"styles_card_icon__jjy3e","card_content":"styles_card_content__ARTfy","card_title":"styles_card_title__jzJw8","card_subtitle":"styles_card_subtitle__wd9qN","overview_cards":"styles_overview_cards__Y8cJd","overview_main":"styles_overview_main__c7EGh","overview_main_full":"styles_overview_main_full__FKMPx","cards":"styles_cards__wZVT0"});
 // EXTERNAL MODULE: ./src/Components/Templates/Layout/index.tsx + 28 modules
 var Layout = __webpack_require__(81168);
 // EXTERNAL MODULE: ./src/Components/Organisms/NotificationModal/index.tsx + 1 modules

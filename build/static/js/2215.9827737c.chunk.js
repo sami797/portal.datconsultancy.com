@@ -360,10 +360,14 @@ const sortedProjectStates=Array.isArray(projectStates)?[...projectStates].sort((
 /* harmony default export */ const Projects_styles_module = ({"actions":"styles_actions__edjiB","actionItem":"styles_actionItem__qrAFw","actionItemText":"styles_actionItemText__Ap3Tc","actionItemButtonWrap":"styles_actionItemButtonWrap__Oh+sh","yesButton":"styles_yesButton__NVBIk","noButton":"styles_noButton__bVaev","overlayCustomStyle":"styles_overlayCustomStyle__UvU3i","form":"styles_form__VDx5T","footer":"styles_footer__3ryKW","avatarWrap":"styles_avatarWrap__K5PuI","qualityWrap":"styles_qualityWrap__CO4ve","image":"styles_image__7Q8oW","overlay":"styles_overlay__UeG9z","cardWrap":"styles_cardWrap__FEGB2","card":"styles_card__UGCvY","card__green":"styles_card__green__vW-1c","card__info":"styles_card__info__RHesw","filterWrap":"styles_filterWrap__olOLU","search":"styles_search__SpJs6","freeText":"styles_freeText__5C6w6","freeTextTwo":"styles_freeTextTwo__lTKd2","placeHolder":"styles_placeHolder__ubNfI","active":"styles_active__iJZuJ","moreFilter":"styles_moreFilter__SnTZO","resetWrap":"styles_resetWrap__ug1Qa","saveSearchWrap":"styles_saveSearchWrap__oXO2C","webIdFilter":"styles_webIdFilter__qc56v","searchItems":"styles_searchItems__J06+1","checkboxGroup":"styles_checkboxGroup__DrwAm","dateWrap":"styles_dateWrap__EBhJ-","inputsWrap":"styles_inputsWrap__uKzF3","footerButtonWrap":"styles_footerButtonWrap__VmwwC","dropdownItem":"styles_dropdownItem__AzaG0","noOption":"styles_noOption__FJWHQ","animateTranslation":"styles_animateTranslation__HD4RH","__translate":"styles___translate__VccIv","publishButton":"styles_publishButton__o6G19","unpublishButton":"styles_unpublishButton__6njH7","deals":"styles_deals__V8DcX","listingDetails":"styles_listingDetails__iMTs6","completionStatus":"styles_completionStatus__e41xr","dropdown":"styles_dropdown__XQfi3","overlay_item":"styles_overlay_item__sHDLS","overlay_item_noData":"styles_overlay_item_noData__G3hRr","overlay_popConfirm":"styles_overlay_popConfirm__bH2uJ","disabledButton":"styles_disabledButton__vGISC","view_as":"styles_view_as__TDQVp"});
 // EXTERNAL MODULE: ./src/Components/Atoms/CardShimmer/index.tsx + 1 modules
 var CardShimmer = __webpack_require__(87031);
+// EXTERNAL MODULE: ./node_modules/antd/es/select/index.js + 30 modules
+var es_select = __webpack_require__(97554);
+// EXTERNAL MODULE: ./node_modules/antd/lib/mentions/index.js
+var mentions = __webpack_require__(91854);
 ;// ./src/Components/Organisms/Projects/index.tsx
 const breadCrumbsData=[{text:"Home",isLink:true,path:"/"},{isLink:false,text:"Projects"}];const useFetchXeroProjects=()=>{const[xeroProjects,setXeroProjects]=(0,react.useState)([]);const[loading,setLoading]=(0,react.useState)(false);const[error,setError]=(0,react.useState)(null);(0,react.useEffect)(()=>{const fetchXeroProjects=async()=>{setLoading(true);try{const response=await axiosInstance/* default */.A.get('/xero/projects');console.log("dekh Xero Projects Response:",response.data);setXeroProjects(response.data.data||[]);}catch(err){var _err$response,_err$response$data;console.error(err);// Log the error
 setError(((_err$response=err.response)===null||_err$response===void 0?void 0:(_err$response$data=_err$response.data)===null||_err$response$data===void 0?void 0:_err$response$data.message)||'Failed to fetch Xero projects');}finally{setLoading(false);}};fetchXeroProjects();},[]);return{xeroProjects,loading,error};};const AllProjects=()=>{var _users$data,_clients$data;const[searchParams]=(0,dist/* useSearchParams */.ok)();// available permissions for the projects page
-const permissionSlug=(0,common/* getPermissionSlugs */.AH)(Project_permissions/* ProjectPermissionsEnum */.l);const{userPermissions}=(0,es/* useSelector */.d4)(state=>state.usersReducer);const permissions=userPermissions;const{readProject}=permissions;const module=(0,react.useMemo)(()=>new Project/* ProjectModule */.K(),[]);const projectStateModule=(0,react.useMemo)(()=>new ProjectState/* ProjectStateModule */.j(),[]);const userModule=(0,react.useMemo)(()=>new User/* UserModule */.U(),[]);const orgModule=(0,react.useMemo)(()=>new Organization/* OrganizationModule */.I(),[]);const[projectViewAs,setProjectViewAs]=(0,react.useState)(()=>{const viewAs=localStorage.getItem("projectViewAs");if(viewAs==="table"){return"table";}return"grid";});const[selectedRowKeys,setSelectedRowKeys]=(0,react.useState)([]);const[moreFilters,setMoreFilters]=(0,react.useState)([]);const[selectedFilters,setSelectedFilters]=(0,react.useState)({title:"",slug:"",quoteNumber:"",projectStateSlugs:"",clientId:0,isClosed:undefined,dateRange:[],userIds:[],projectRole:0// sortOrder: "",
+const permissionSlug=(0,common/* getPermissionSlugs */.AH)(Project_permissions/* ProjectPermissionsEnum */.l);const{userPermissions}=(0,es/* useSelector */.d4)(state=>state.usersReducer);const permissions=userPermissions;const{readProject}=permissions;const module=(0,react.useMemo)(()=>new Project/* ProjectModule */.K(),[]);const projectStateModule=(0,react.useMemo)(()=>new ProjectState/* ProjectStateModule */.j(),[]);const userModule=(0,react.useMemo)(()=>new User/* UserModule */.U(),[]);const orgModule=(0,react.useMemo)(()=>new Organization/* OrganizationModule */.I(),[]);const[projectViewAs,setProjectViewAs]=(0,react.useState)(()=>{const viewAs=localStorage.getItem("projectViewAs");if(viewAs==="table"){return"table";}return"grid";});const[sortField,setSortField]=(0,react.useState)('title');const[sortOrder,setSortOrder]=(0,react.useState)('ascend');const[selectedRowKeys,setSelectedRowKeys]=(0,react.useState)([]);const[moreFilters,setMoreFilters]=(0,react.useState)([]);const[selectedFilters,setSelectedFilters]=(0,react.useState)({title:"",slug:"",quoteNumber:"",projectStateSlugs:"",clientId:0,isClosed:undefined,dateRange:[],userIds:[],projectRole:0// sortOrder: "",
 // sortByField: ""
 });const{xeroProjects,loading:xeroLoading,error:xeroError}=useFetchXeroProjects();const[projects,setProjects]=(0,react.useState)([]);const[error,setError]=(0,react.useState)(null);const[reset,setReset]=(0,react.useState)(false);// Title Search
 const[titleTerm,setTitleTerm]=(0,react.useState)();// Users Search
@@ -371,7 +375,11 @@ const[searchTerm,setSearchTerm]=(0,react.useState)("");// Client Search
 const[clientSearchTerm,setClientSearchTerm]=(0,react.useState)("");// Title Debounce
 const debouncedTitleTerm=(0,useDebounce/* useDebounce */.d)(titleTerm,500);// Users Debounce
 const debouncedSearchTerm=(0,useDebounce/* useDebounce */.d)(searchTerm,500);// Client Debounce
-const debouncedClientSearchTerm=(0,useDebounce/* useDebounce */.d)(clientSearchTerm,500);const{data,meta,onRefresh,loading}=(0,hooks/* useFetchData */.Gs)({method:module.getAllRecords,initialQuery:{isClosed:searchParams.get("isClosed")==="true"?true:searchParams.get("isClosed")==="false"?false:undefined,onHold:searchParams.get("onHold")==="true"?true:searchParams.get("onHold")==="false"?false:undefined}});const{data:projectStates}=(0,hooks/* useFetchData */.Gs)({method:projectStateModule.getPublishedRecords,initialQuery:{perPage:100}});(0,react.useEffect)(()=>{let combinedProjects=[];console.log('Data:',data);console.log('Xero Projects :',xeroProjects);if(data&&Array.isArray(data)&&xeroProjects&&Array.isArray(xeroProjects)){combinedProjects=[...data,...xeroProjects];}else if(data&&Array.isArray(data)){combinedProjects=data;}else if(xeroProjects&&Array.isArray(xeroProjects)){combinedProjects=xeroProjects;}else{combinedProjects=[];}setProjects(combinedProjects);console.log('Combined Projects:',combinedProjects);},[data,xeroProjects]);const[users,setUsers]=(0,react.useState)({data:[],loading:false});// Client Search Results
+const debouncedClientSearchTerm=(0,useDebounce/* useDebounce */.d)(clientSearchTerm,500);const{data,meta,onRefresh,loading}=(0,hooks/* useFetchData */.Gs)({method:module.getAllRecords,initialQuery:{isClosed:searchParams.get("isClosed")==="true"?true:searchParams.get("isClosed")==="false"?false:undefined,onHold:searchParams.get("onHold")==="true"?true:searchParams.get("onHold")==="false"?false:undefined}});const{data:projectStates}=(0,hooks/* useFetchData */.Gs)({method:projectStateModule.getPublishedRecords,initialQuery:{perPage:100}});const sortData=function(){let data=arguments.length>0&&arguments[0]!==undefined?arguments[0]:[];let sortField=arguments.length>1?arguments[1]:undefined;let sortOrder=arguments.length>2?arguments[2]:undefined;return data.sort((a,b)=>{const aValue=a[sortField];const bValue=b[sortField];// Ensure aValue and bValue are not undefined
+if(aValue===undefined||bValue===undefined){return 0;// or handle according to your preference
+}if(sortOrder==='ascend'){return aValue<bValue?-1:aValue>bValue?1:0;}else{return aValue>bValue?-1:aValue<bValue?1:0;}});};const handleSortChange=value=>{setSortOrder(value);};// Handle table change (pagination, filters, sorting)
+const handleTableChange=(pagination,filters,sorter)=>{const{field,order}=sorter;if(field&&order){setSortField(field);// Cast 'field' to keyof ProjectTypes
+setSortOrder(order);}};(0,react.useEffect)(()=>{let combinedProjects=[];console.log('Data:',data);console.log('Xero Projects :',xeroProjects);if(data&&Array.isArray(data)&&xeroProjects&&Array.isArray(xeroProjects)){combinedProjects=[...data,...xeroProjects];}else if(data&&Array.isArray(data)){combinedProjects=data;}else if(xeroProjects&&Array.isArray(xeroProjects)){combinedProjects=xeroProjects;}else{combinedProjects=[];}setProjects(combinedProjects);console.log('Combined Projects:',combinedProjects);},[data,xeroProjects]);const[users,setUsers]=(0,react.useState)({data:[],loading:false});// Client Search Results
 const[clients,setClients]=(0,react.useState)({data:[],loading:false});// const sortByField = [
 //   { label: "Name", value: "name" },
 //   { label: "Email", value: "email" },
@@ -391,7 +399,7 @@ const onViewAsChange=value=>{localStorage.setItem("projectViewAs",value);};// Us
 const timer=setTimeout(()=>{setReset(false);},2000);return()=>clearTimeout(timer);},[reset]);(0,react.useEffect)(()=>{if(readProject===false){window.location.replace('/');}},[readProject]);const moreFiltersOptions=[{label:"Users",value:"userIds"},{label:"Slug",value:"slug"},{label:"Closed Projects",value:"isClosed"}];const moreComponents={userIds:/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* CustomFilter */.YH,{type:"multiSelect",label:"Users",name:"userIds",withSearch:true,options:users===null||users===void 0?void 0:(_users$data=users.data)===null||_users$data===void 0?void 0:_users$data.map(item=>({label:"".concat(item.firstName," ").concat(item.lastName),value:"".concat(item.id)})),onChange:value=>{setSelectedFilters((0,objectSpread2/* default */.A)((0,objectSpread2/* default */.A)({},selectedFilters),{},{userIds:value}));},onReset:()=>{setReset(true);onReset("userIds",[]);// Reset search term
 setSearchTerm("");},defaultVisible:moreFilters.includes("userIds"),onUpdate:onUpdate// START: For search
 ,loading:users.loading,searchTerm:searchTerm,onSearch:event=>setSearchTerm(event.currentTarget.value)// END: For search
-}),slug:/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* CustomFilter */.YH,{type:"input",label:"Slug",name:"slug",value:String(selectedFilters===null||selectedFilters===void 0?void 0:selectedFilters.slug),onChange:onSelected,onReset:()=>onReset("slug",""),onUpdate:onUpdate,defaultVisible:moreFilters.includes("slug")}),isClosed:/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* CustomFilter */.YH,{type:"radio",label:"Closed Projects",name:"isClosed",options:[{label:"Yes",value:"true"},{label:"No",value:"false"}],value:String(selectedFilters===null||selectedFilters===void 0?void 0:selectedFilters.isClosed),onChange:onSelected,onReset:()=>onReset("isClosed",""),onUpdate:onUpdate,defaultVisible:moreFilters.includes("isClosed")})};(0,react.useEffect)(()=>{const isClosed=searchParams.get("isClosed");if(isClosed!==null){setSelectedFilters(prev=>(0,objectSpread2/* default */.A)((0,objectSpread2/* default */.A)({},prev),{},{isClosed:isClosed==="true"}));}},[]);return/*#__PURE__*/(0,jsx_runtime.jsxs)(Layout/* default */.A,{permissionSlug:permissionSlug,onGetProjects:onUpdate,children:[/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* PageHeader */.zY,{heading:"Projects",breadCrumbData:breadCrumbsData,filters:readProject?/*#__PURE__*/(0,jsx_runtime.jsxs)("div",{className:styles_module/* default */.A.filterWrapper,children:[selectedRowKeys.length>0?/*#__PURE__*/(0,jsx_runtime.jsx)(jsx_runtime.Fragment,{children:/*#__PURE__*/(0,jsx_runtime.jsx)("div",{children:"Bulk Action Components will be here"})}):/*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment,{children:[/*#__PURE__*/(0,jsx_runtime.jsx)("div",{children:/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* CustomInput */.wi,{placeHolder:"Search by title or reference number",onChange:onTitleChange,value:titleTerm})}),/*#__PURE__*/(0,jsx_runtime.jsx)("div",{children:/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* CustomFilter */.YH,{type:"radio",label:"Project Status",name:"projectStateSlugs",options:(projectStates===null||projectStates===void 0?void 0:projectStates.map(state=>({label:state.title,value:"".concat(state.slug)})))||[],value:"".concat(selectedFilters===null||selectedFilters===void 0?void 0:selectedFilters.projectStateSlugs),onChange:onSelected,onReset:()=>onReset("projectStateSlugs",""),onUpdate:onUpdate})}),/*#__PURE__*/(0,jsx_runtime.jsx)("div",{children:/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* CustomFilter */.YH,{type:"input",label:"Quote Number",name:"quoteNumber",value:"".concat(selectedFilters===null||selectedFilters===void 0?void 0:selectedFilters.quoteNumber),onChange:onSelected,onReset:()=>onReset("quoteNumber",""),onUpdate:onUpdate})}),/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* CustomFilter */.YH,{type:"radio",label:"Client",name:"clientId",withSearch:true,options:clients===null||clients===void 0?void 0:(_clients$data=clients.data)===null||_clients$data===void 0?void 0:_clients$data.map(item=>({label:item.name,value:"".concat(item.id)})),onChange:onSelected,value:Number(selectedFilters===null||selectedFilters===void 0?void 0:selectedFilters.clientId)>0?"".concat(selectedFilters===null||selectedFilters===void 0?void 0:selectedFilters.clientId):"",onReset:()=>{onReset("clientId",0);// Reset search term
+}),slug:/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* CustomFilter */.YH,{type:"input",label:"Slug",name:"slug",value:String(selectedFilters===null||selectedFilters===void 0?void 0:selectedFilters.slug),onChange:onSelected,onReset:()=>onReset("slug",""),onUpdate:onUpdate,defaultVisible:moreFilters.includes("slug")}),isClosed:/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* CustomFilter */.YH,{type:"radio",label:"Closed Projects",name:"isClosed",options:[{label:"Yes",value:"true"},{label:"No",value:"false"}],value:String(selectedFilters===null||selectedFilters===void 0?void 0:selectedFilters.isClosed),onChange:onSelected,onReset:()=>onReset("isClosed",""),onUpdate:onUpdate,defaultVisible:moreFilters.includes("isClosed")})};(0,react.useEffect)(()=>{const isClosed=searchParams.get("isClosed");if(isClosed!==null){setSelectedFilters(prev=>(0,objectSpread2/* default */.A)((0,objectSpread2/* default */.A)({},prev),{},{isClosed:isClosed==="true"}));}},[]);return/*#__PURE__*/(0,jsx_runtime.jsxs)(Layout/* default */.A,{permissionSlug:permissionSlug,onGetProjects:onUpdate,children:[/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* PageHeader */.zY,{heading:"Projects",breadCrumbData:breadCrumbsData,filters:readProject?/*#__PURE__*/(0,jsx_runtime.jsxs)("div",{className:styles_module/* default */.A.filterWrapper,children:[selectedRowKeys.length>0?/*#__PURE__*/(0,jsx_runtime.jsx)(jsx_runtime.Fragment,{children:/*#__PURE__*/(0,jsx_runtime.jsx)("div",{children:"Bulk Action Components will be here"})}):/*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment,{children:[/*#__PURE__*/(0,jsx_runtime.jsx)("div",{children:/*#__PURE__*/(0,jsx_runtime.jsxs)(es_select/* default */.A,{defaultValue:"ascend",style:{width:150},onChange:handleSortChange,children:[/*#__PURE__*/(0,jsx_runtime.jsx)(mentions/* Option */.c$,{value:"ascend",children:"A to Z"}),/*#__PURE__*/(0,jsx_runtime.jsx)(mentions/* Option */.c$,{value:"descend",children:"Z to A"})]})}),/*#__PURE__*/(0,jsx_runtime.jsx)("div",{children:/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* CustomInput */.wi,{placeHolder:"Search by title or reference number",onChange:onTitleChange,value:titleTerm})}),/*#__PURE__*/(0,jsx_runtime.jsx)("div",{children:/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* CustomFilter */.YH,{type:"radio",label:"Project Status",name:"projectStateSlugs",options:(projectStates===null||projectStates===void 0?void 0:projectStates.map(state=>({label:state.title,value:"".concat(state.slug)})))||[],value:"".concat(selectedFilters===null||selectedFilters===void 0?void 0:selectedFilters.projectStateSlugs),onChange:onSelected,onReset:()=>onReset("projectStateSlugs",""),onUpdate:onUpdate})}),/*#__PURE__*/(0,jsx_runtime.jsx)("div",{children:/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* CustomFilter */.YH,{type:"input",label:"Quote Number",name:"quoteNumber",value:"".concat(selectedFilters===null||selectedFilters===void 0?void 0:selectedFilters.quoteNumber),onChange:onSelected,onReset:()=>onReset("quoteNumber",""),onUpdate:onUpdate})}),/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* CustomFilter */.YH,{type:"radio",label:"Client",name:"clientId",withSearch:true,options:clients===null||clients===void 0?void 0:(_clients$data=clients.data)===null||_clients$data===void 0?void 0:_clients$data.map(item=>({label:item.name,value:"".concat(item.id)})),onChange:onSelected,value:Number(selectedFilters===null||selectedFilters===void 0?void 0:selectedFilters.clientId)>0?"".concat(selectedFilters===null||selectedFilters===void 0?void 0:selectedFilters.clientId):"",onReset:()=>{onReset("clientId",0);// Reset search term
 setClientSearchTerm("");},onUpdate:onUpdate// START: For search
 ,loading:clients.loading,searchTerm:clientSearchTerm,onSearch:event=>setClientSearchTerm(event.currentTarget.value)// END: For search
 }),/*#__PURE__*/(0,jsx_runtime.jsx)("div",{children:/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* CustomFilter */.YH,{type:"datepicker",label:"Date",name:"dateRange",onChange:value=>setSelectedFilters((0,objectSpread2/* default */.A)((0,objectSpread2/* default */.A)({},selectedFilters),{},{dateRange:value})),onReset:()=>onReset("dateRange",""),onUpdate:onUpdate})}),/*#__PURE__*/(0,jsx_runtime.jsx)("div",{children:/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* CustomFilter */.YH,{type:"radio",label:"Project Role",name:"projectRole",options:Object.entries(commonEnums/* ProjectRoleEnumString */.A6).map(_ref=>{let[key,value]=_ref;return{label:key,value:value};}),value:String(selectedFilters===null||selectedFilters===void 0?void 0:selectedFilters.projectRole),onChange:onSelected,onReset:()=>onReset("projectRole",""),onUpdate:onUpdate})}),/**  Find the selected filter and render the component based on the name of the filter */Object.keys(moreComponents).map(key=>{return(moreFilters===null||moreFilters===void 0?void 0:moreFilters.includes(key))&&moreComponents[key];}),/*#__PURE__*/(0,jsx_runtime.jsx)("div",{children:/*#__PURE__*/(0,jsx_runtime.jsx)(more/* default */.A,{options:moreFiltersOptions===null||moreFiltersOptions===void 0?void 0:moreFiltersOptions.map(option=>({label:option.label,value:option.value})),onChange:value=>setMoreFilters(value),value:moreFilters})})]}),/*#__PURE__*/(0,jsx_runtime.jsx)("div",{style:{overflow:"auto"},className:Projects_styles_module.view_as,children:/*#__PURE__*/(0,jsx_runtime.jsx)(segmented/* default */.A,{options:[{label:'Table',value:'table',icon:/*#__PURE__*/(0,jsx_runtime.jsx)(BarsOutlined/* default */.A,{})},{label:'Grid',value:'grid',icon:/*#__PURE__*/(0,jsx_runtime.jsx)(icons_AppstoreOutlined,{})}],onChange:value=>{setProjectViewAs(value);onViewAsChange(value);},value:projectViewAs})})]}):null// excelExport={propertiesData.data?.length > 0 &&
@@ -401,7 +409,7 @@ setClientSearchTerm("");},onUpdate:onUpdate// START: For search
 //         data={excelData}
 //     />
 // }
-}),!data&&loading&&/*#__PURE__*/(0,jsx_runtime.jsx)("div",{style:{display:"flex",flexWrap:"wrap",width:"100%",gap:10},children:Array(6).fill(0).map((_item,index)=>/*#__PURE__*/(0,jsx_runtime.jsx)(CardShimmer/* CardShimmer */.S,{},"shimmerItem-".concat(index)))}),readProject===true&&/*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment,{children:[/*#__PURE__*/(0,jsx_runtime.jsx)("div",{className:styles_module/* default */.A.antdTableWrapper,children:(data===null||data===void 0?void 0:data.length)===0?/*#__PURE__*/(0,jsx_runtime.jsx)("div",{style:{marginTop:"50px"},children:/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* CustomEmpty */.ZX,{description:"No Projects found"})}):/*#__PURE__*/(0,jsx_runtime.jsx)(jsx_runtime.Fragment,{children:projectViewAs==="table"?/*#__PURE__*/(0,jsx_runtime.jsx)(Projects_table,{data:{allProjects:data,onRefresh:onUpdate,projectStates:projectStates},permissions:permissions,rowSelection:{selectedRowKeys,onChange:setSelectedRowKeys}}):/*#__PURE__*/(0,jsx_runtime.jsx)(Card/* default */.A,{data:{allProjects:projects,onRefresh:onUpdate,projectStates:projectStates},permissions:permissions})})}),/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* Pagination */.dK,{total:meta===null||meta===void 0?void 0:meta.total,current:meta===null||meta===void 0?void 0:meta.page,defaultPageSize:25,pageSizeOptions:[10,20,50,100],onChange:onPaginationChange})]}),readProject===false&&/*#__PURE__*/(0,jsx_runtime.jsx)(ErrorCodes/* ErrorCode403 */.$t,{mainMessage:"You don't have permission to view this data"})]});};/* harmony default export */ const Projects = (AllProjects);
+}),!data&&loading&&/*#__PURE__*/(0,jsx_runtime.jsx)("div",{style:{display:"flex",flexWrap:"wrap",width:"100%",gap:10},children:Array(6).fill(0).map((_item,index)=>/*#__PURE__*/(0,jsx_runtime.jsx)(CardShimmer/* CardShimmer */.S,{},"shimmerItem-".concat(index)))}),readProject===true&&/*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment,{children:[/*#__PURE__*/(0,jsx_runtime.jsx)("div",{className:styles_module/* default */.A.antdTableWrapper,children:(data===null||data===void 0?void 0:data.length)===0?/*#__PURE__*/(0,jsx_runtime.jsx)("div",{style:{marginTop:"50px"},children:/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* CustomEmpty */.ZX,{description:"No Projects found"})}):/*#__PURE__*/(0,jsx_runtime.jsx)(jsx_runtime.Fragment,{children:projectViewAs==="table"?/*#__PURE__*/(0,jsx_runtime.jsx)(Projects_table,{data:{allProjects:sortData(data,sortField,sortOrder),onRefresh:onUpdate,projectStates:projectStates},permissions:permissions,rowSelection:{selectedRowKeys,onChange:setSelectedRowKeys}}):/*#__PURE__*/(0,jsx_runtime.jsx)(Card/* default */.A,{data:{allProjects:sortData(projects,sortField,sortOrder),onRefresh:onUpdate,projectStates:projectStates},permissions:permissions})})}),/*#__PURE__*/(0,jsx_runtime.jsx)(Atoms/* Pagination */.dK,{total:meta===null||meta===void 0?void 0:meta.total,current:meta===null||meta===void 0?void 0:meta.page,defaultPageSize:25,pageSizeOptions:[10,20,50,100],onChange:onPaginationChange})]}),readProject===false&&/*#__PURE__*/(0,jsx_runtime.jsx)(ErrorCodes/* ErrorCode403 */.$t,{mainMessage:"You don't have permission to view this data"})]});};/* harmony default export */ const Projects = (AllProjects);
 
 /***/ }),
 
@@ -957,6 +965,555 @@ var segmented_Segmented = /*#__PURE__*/react.forwardRef(function (props, ref) {
 });
 if (false) {}
 /* harmony default export */ const segmented = (segmented_Segmented);
+
+/***/ }),
+
+/***/ 68781:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+
+var _interopRequireDefault = (__webpack_require__(24994)["default"]);
+var _interopRequireWildcard = (__webpack_require__(6305)["default"]);
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+var React = _interopRequireWildcard(__webpack_require__(9950));
+var _ = __webpack_require__(78279);
+var _empty = _interopRequireDefault(__webpack_require__(44626));
+var defaultRenderEmpty = function defaultRenderEmpty(componentName) {
+  return /*#__PURE__*/React.createElement(_.ConfigConsumer, null, function (_ref) {
+    var getPrefixCls = _ref.getPrefixCls;
+    var prefix = getPrefixCls('empty');
+    switch (componentName) {
+      case 'Table':
+      case 'List':
+        return /*#__PURE__*/React.createElement(_empty["default"], {
+          image: _empty["default"].PRESENTED_IMAGE_SIMPLE
+        });
+      case 'Select':
+      case 'TreeSelect':
+      case 'Cascader':
+      case 'Transfer':
+      case 'Mentions':
+        return /*#__PURE__*/React.createElement(_empty["default"], {
+          image: _empty["default"].PRESENTED_IMAGE_SIMPLE,
+          className: "".concat(prefix, "-small")
+        });
+      /* istanbul ignore next */
+      default:
+        // Should never hit if we take all the component into consider.
+        return /*#__PURE__*/React.createElement(_empty["default"], null);
+    }
+  });
+};
+var _default = defaultRenderEmpty;
+exports["default"] = _default;
+
+/***/ }),
+
+/***/ 87727:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+
+var _interopRequireWildcard = (__webpack_require__(6305)["default"]);
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+var React = _interopRequireWildcard(__webpack_require__(9950));
+var _configProvider = __webpack_require__(78279);
+var Empty = function Empty() {
+  var _React$useContext = React.useContext(_configProvider.ConfigContext),
+    getPrefixCls = _React$useContext.getPrefixCls;
+  var prefixCls = getPrefixCls('empty-img-default');
+  return /*#__PURE__*/React.createElement("svg", {
+    className: prefixCls,
+    width: "184",
+    height: "152",
+    viewBox: "0 0 184 152",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, /*#__PURE__*/React.createElement("g", {
+    fill: "none",
+    fillRule: "evenodd"
+  }, /*#__PURE__*/React.createElement("g", {
+    transform: "translate(24 31.67)"
+  }, /*#__PURE__*/React.createElement("ellipse", {
+    className: "".concat(prefixCls, "-ellipse"),
+    cx: "67.797",
+    cy: "106.89",
+    rx: "67.797",
+    ry: "12.668"
+  }), /*#__PURE__*/React.createElement("path", {
+    className: "".concat(prefixCls, "-path-1"),
+    d: "M122.034 69.674L98.109 40.229c-1.148-1.386-2.826-2.225-4.593-2.225h-51.44c-1.766 0-3.444.839-4.592 2.225L13.56 69.674v15.383h108.475V69.674z"
+  }), /*#__PURE__*/React.createElement("path", {
+    className: "".concat(prefixCls, "-path-2"),
+    d: "M101.537 86.214L80.63 61.102c-1.001-1.207-2.507-1.867-4.048-1.867H31.724c-1.54 0-3.047.66-4.048 1.867L6.769 86.214v13.792h94.768V86.214z",
+    transform: "translate(13.56)"
+  }), /*#__PURE__*/React.createElement("path", {
+    className: "".concat(prefixCls, "-path-3"),
+    d: "M33.83 0h67.933a4 4 0 0 1 4 4v93.344a4 4 0 0 1-4 4H33.83a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4z"
+  }), /*#__PURE__*/React.createElement("path", {
+    className: "".concat(prefixCls, "-path-4"),
+    d: "M42.678 9.953h50.237a2 2 0 0 1 2 2V36.91a2 2 0 0 1-2 2H42.678a2 2 0 0 1-2-2V11.953a2 2 0 0 1 2-2zM42.94 49.767h49.713a2.262 2.262 0 1 1 0 4.524H42.94a2.262 2.262 0 0 1 0-4.524zM42.94 61.53h49.713a2.262 2.262 0 1 1 0 4.525H42.94a2.262 2.262 0 0 1 0-4.525zM121.813 105.032c-.775 3.071-3.497 5.36-6.735 5.36H20.515c-3.238 0-5.96-2.29-6.734-5.36a7.309 7.309 0 0 1-.222-1.79V69.675h26.318c2.907 0 5.25 2.448 5.25 5.42v.04c0 2.971 2.37 5.37 5.277 5.37h34.785c2.907 0 5.277-2.421 5.277-5.393V75.1c0-2.972 2.343-5.426 5.25-5.426h26.318v33.569c0 .617-.077 1.216-.221 1.789z"
+  })), /*#__PURE__*/React.createElement("path", {
+    className: "".concat(prefixCls, "-path-5"),
+    d: "M149.121 33.292l-6.83 2.65a1 1 0 0 1-1.317-1.23l1.937-6.207c-2.589-2.944-4.109-6.534-4.109-10.408C138.802 8.102 148.92 0 161.402 0 173.881 0 184 8.102 184 18.097c0 9.995-10.118 18.097-22.599 18.097-4.528 0-8.744-1.066-12.28-2.902z"
+  }), /*#__PURE__*/React.createElement("g", {
+    className: "".concat(prefixCls, "-g"),
+    transform: "translate(149.65 15.383)"
+  }, /*#__PURE__*/React.createElement("ellipse", {
+    cx: "20.654",
+    cy: "3.167",
+    rx: "2.849",
+    ry: "2.815"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M5.698 5.63H0L2.898.704zM9.259.704h4.985V5.63H9.259z"
+  }))));
+};
+var _default = Empty;
+exports["default"] = _default;
+
+/***/ }),
+
+/***/ 44626:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+
+var _interopRequireWildcard = (__webpack_require__(6305)["default"]);
+var _interopRequireDefault = (__webpack_require__(24994)["default"]);
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(43693));
+var _extends2 = _interopRequireDefault(__webpack_require__(94634));
+var _classnames = _interopRequireDefault(__webpack_require__(48383));
+var React = _interopRequireWildcard(__webpack_require__(9950));
+var _configProvider = __webpack_require__(78279);
+var _LocaleReceiver = _interopRequireDefault(__webpack_require__(20840));
+var _empty = _interopRequireDefault(__webpack_require__(87727));
+var _simple = _interopRequireDefault(__webpack_require__(38994));
+var __rest = void 0 && (void 0).__rest || function (s, e) {
+  var t = {};
+  for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+var defaultEmptyImg = /*#__PURE__*/React.createElement(_empty["default"], null);
+var simpleEmptyImg = /*#__PURE__*/React.createElement(_simple["default"], null);
+var Empty = function Empty(_a) {
+  var className = _a.className,
+    customizePrefixCls = _a.prefixCls,
+    _a$image = _a.image,
+    image = _a$image === void 0 ? defaultEmptyImg : _a$image,
+    description = _a.description,
+    children = _a.children,
+    imageStyle = _a.imageStyle,
+    restProps = __rest(_a, ["className", "prefixCls", "image", "description", "children", "imageStyle"]);
+  var _React$useContext = React.useContext(_configProvider.ConfigContext),
+    getPrefixCls = _React$useContext.getPrefixCls,
+    direction = _React$useContext.direction;
+  return /*#__PURE__*/React.createElement(_LocaleReceiver["default"], {
+    componentName: "Empty"
+  }, function (contextLocale) {
+    var _classNames;
+    var prefixCls = getPrefixCls('empty', customizePrefixCls);
+    var des = typeof description !== 'undefined' ? description : contextLocale.description;
+    var alt = typeof des === 'string' ? des : 'empty';
+    var imageNode = null;
+    if (typeof image === 'string') {
+      imageNode = /*#__PURE__*/React.createElement("img", {
+        alt: alt,
+        src: image
+      });
+    } else {
+      imageNode = image;
+    }
+    return /*#__PURE__*/React.createElement("div", (0, _extends2["default"])({
+      className: (0, _classnames["default"])(prefixCls, (_classNames = {}, (0, _defineProperty2["default"])(_classNames, "".concat(prefixCls, "-normal"), image === simpleEmptyImg), (0, _defineProperty2["default"])(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames), className)
+    }, restProps), /*#__PURE__*/React.createElement("div", {
+      className: "".concat(prefixCls, "-image"),
+      style: imageStyle
+    }, imageNode), des && /*#__PURE__*/React.createElement("div", {
+      className: "".concat(prefixCls, "-description")
+    }, des), children && /*#__PURE__*/React.createElement("div", {
+      className: "".concat(prefixCls, "-footer")
+    }, children));
+  });
+};
+Empty.PRESENTED_IMAGE_DEFAULT = defaultEmptyImg;
+Empty.PRESENTED_IMAGE_SIMPLE = simpleEmptyImg;
+var _default = Empty;
+exports["default"] = _default;
+
+/***/ }),
+
+/***/ 38994:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+
+var _interopRequireWildcard = (__webpack_require__(6305)["default"]);
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+var React = _interopRequireWildcard(__webpack_require__(9950));
+var _configProvider = __webpack_require__(78279);
+var Simple = function Simple() {
+  var _React$useContext = React.useContext(_configProvider.ConfigContext),
+    getPrefixCls = _React$useContext.getPrefixCls;
+  var prefixCls = getPrefixCls('empty-img-simple');
+  return /*#__PURE__*/React.createElement("svg", {
+    className: prefixCls,
+    width: "64",
+    height: "41",
+    viewBox: "0 0 64 41",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, /*#__PURE__*/React.createElement("g", {
+    transform: "translate(0 1)",
+    fill: "none",
+    fillRule: "evenodd"
+  }, /*#__PURE__*/React.createElement("ellipse", {
+    className: "".concat(prefixCls, "-ellipse"),
+    cx: "32",
+    cy: "33",
+    rx: "32",
+    ry: "7"
+  }), /*#__PURE__*/React.createElement("g", {
+    className: "".concat(prefixCls, "-g"),
+    fillRule: "nonzero"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z",
+    className: "".concat(prefixCls, "-path")
+  }))));
+};
+var _default = Simple;
+exports["default"] = _default;
+
+/***/ }),
+
+/***/ 91854:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+var __webpack_unused_export__;
+
+
+var _interopRequireWildcard = (__webpack_require__(6305)["default"]);
+var _interopRequireDefault = (__webpack_require__(24994)["default"]);
+__webpack_unused_export__ = ({
+  value: true
+});
+__webpack_unused_export__ = exports.c$ = void 0;
+var _extends2 = _interopRequireDefault(__webpack_require__(94634));
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(43693));
+var _slicedToArray2 = _interopRequireDefault(__webpack_require__(85715));
+var _classnames = _interopRequireDefault(__webpack_require__(48383));
+var _rcMentions = _interopRequireDefault(__webpack_require__(16841));
+var _ref = __webpack_require__(46078);
+var React = _interopRequireWildcard(__webpack_require__(9950));
+var _configProvider = __webpack_require__(78279);
+var _defaultRenderEmpty = _interopRequireDefault(__webpack_require__(68781));
+var _context = __webpack_require__(3352);
+var _spin = _interopRequireDefault(__webpack_require__(55273));
+var _statusUtils = __webpack_require__(6485);
+var _warning = _interopRequireDefault(__webpack_require__(85778));
+var __rest = void 0 && (void 0).__rest || function (s, e) {
+  var t = {};
+  for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+var Option = _rcMentions["default"].Option;
+exports.c$ = Option;
+function loadingFilterOption() {
+  return true;
+}
+var InternalMentions = function InternalMentions(_a, ref) {
+  var _classNames;
+  var customizePrefixCls = _a.prefixCls,
+    className = _a.className,
+    disabled = _a.disabled,
+    loading = _a.loading,
+    filterOption = _a.filterOption,
+    children = _a.children,
+    notFoundContent = _a.notFoundContent,
+    options = _a.options,
+    customStatus = _a.status,
+    restProps = __rest(_a, ["prefixCls", "className", "disabled", "loading", "filterOption", "children", "notFoundContent", "options", "status"]);
+  var _React$useState = React.useState(false),
+    _React$useState2 = (0, _slicedToArray2["default"])(_React$useState, 2),
+    focused = _React$useState2[0],
+    setFocused = _React$useState2[1];
+  var innerRef = React.useRef();
+  var mergedRef = (0, _ref.composeRef)(ref, innerRef);
+  // =================== Warning =====================
+  if (false) {}
+  var _React$useContext = React.useContext(_configProvider.ConfigContext),
+    getPrefixCls = _React$useContext.getPrefixCls,
+    renderEmpty = _React$useContext.renderEmpty,
+    direction = _React$useContext.direction;
+  var _React$useContext2 = React.useContext(_context.FormItemInputContext),
+    contextStatus = _React$useContext2.status,
+    hasFeedback = _React$useContext2.hasFeedback,
+    feedbackIcon = _React$useContext2.feedbackIcon;
+  var mergedStatus = (0, _statusUtils.getMergedStatus)(contextStatus, customStatus);
+  var onFocus = function onFocus() {
+    if (restProps.onFocus) {
+      restProps.onFocus.apply(restProps, arguments);
+    }
+    setFocused(true);
+  };
+  var onBlur = function onBlur() {
+    if (restProps.onBlur) {
+      restProps.onBlur.apply(restProps, arguments);
+    }
+    setFocused(false);
+  };
+  var getNotFoundContent = function getNotFoundContent() {
+    if (notFoundContent !== undefined) {
+      return notFoundContent;
+    }
+    return (renderEmpty || _defaultRenderEmpty["default"])('Select');
+  };
+  var getOptions = function getOptions() {
+    if (loading) {
+      return /*#__PURE__*/React.createElement(Option, {
+        value: "ANTD_SEARCHING",
+        disabled: true
+      }, /*#__PURE__*/React.createElement(_spin["default"], {
+        size: "small"
+      }));
+    }
+    return children;
+  };
+  var mergedOptions = loading ? [{
+    value: 'ANTD_SEARCHING',
+    disabled: true,
+    label: /*#__PURE__*/React.createElement(_spin["default"], {
+      size: "small"
+    })
+  }] : options;
+  var getFilterOption = function getFilterOption() {
+    if (loading) {
+      return loadingFilterOption;
+    }
+    return filterOption;
+  };
+  var prefixCls = getPrefixCls('mentions', customizePrefixCls);
+  var mergedClassName = (0, _classnames["default"])((_classNames = {}, (0, _defineProperty2["default"])(_classNames, "".concat(prefixCls, "-disabled"), disabled), (0, _defineProperty2["default"])(_classNames, "".concat(prefixCls, "-focused"), focused), (0, _defineProperty2["default"])(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames), (0, _statusUtils.getStatusClassNames)(prefixCls, mergedStatus), !hasFeedback && className);
+  var mentions = /*#__PURE__*/React.createElement(_rcMentions["default"], (0, _extends2["default"])({
+    prefixCls: prefixCls,
+    notFoundContent: getNotFoundContent(),
+    className: mergedClassName,
+    disabled: disabled,
+    direction: direction
+  }, restProps, {
+    filterOption: getFilterOption(),
+    onFocus: onFocus,
+    onBlur: onBlur,
+    ref: mergedRef,
+    options: mergedOptions
+  }), getOptions());
+  if (hasFeedback) {
+    return /*#__PURE__*/React.createElement("div", {
+      className: (0, _classnames["default"])("".concat(prefixCls, "-affix-wrapper"), (0, _statusUtils.getStatusClassNames)("".concat(prefixCls, "-affix-wrapper"), mergedStatus, hasFeedback), className)
+    }, mentions, /*#__PURE__*/React.createElement("span", {
+      className: "".concat(prefixCls, "-suffix")
+    }, feedbackIcon));
+  }
+  return mentions;
+};
+var Mentions = /*#__PURE__*/React.forwardRef(InternalMentions);
+if (false) {}
+Mentions.Option = Option;
+Mentions.getMentions = function () {
+  var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var _config$prefix = config.prefix,
+    prefix = _config$prefix === void 0 ? '@' : _config$prefix,
+    _config$split = config.split,
+    split = _config$split === void 0 ? ' ' : _config$split;
+  var prefixList = Array.isArray(prefix) ? prefix : [prefix];
+  return value.split(split).map(function () {
+    var str = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    var hitPrefix = null;
+    prefixList.some(function (prefixStr) {
+      var startStr = str.slice(0, prefixStr.length);
+      if (startStr === prefixStr) {
+        hitPrefix = prefixStr;
+        return true;
+      }
+      return false;
+    });
+    if (hitPrefix !== null) {
+      return {
+        prefix: hitPrefix,
+        value: str.slice(hitPrefix.length)
+      };
+    }
+    return null;
+  }).filter(function (entity) {
+    return !!entity && !!entity.value;
+  });
+};
+var _default = Mentions;
+__webpack_unused_export__ = _default;
+
+/***/ }),
+
+/***/ 55273:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+
+var _interopRequireWildcard = (__webpack_require__(6305)["default"]);
+var _interopRequireDefault = (__webpack_require__(24994)["default"]);
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+var _extends2 = _interopRequireDefault(__webpack_require__(94634));
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(43693));
+var _slicedToArray2 = _interopRequireDefault(__webpack_require__(85715));
+var _classnames = _interopRequireDefault(__webpack_require__(48383));
+var _debounce = _interopRequireDefault(__webpack_require__(95491));
+var _omit = _interopRequireDefault(__webpack_require__(76270));
+var React = _interopRequireWildcard(__webpack_require__(9950));
+var _configProvider = __webpack_require__(78279);
+var _reactNode = __webpack_require__(46297);
+var _type = __webpack_require__(98812);
+var __rest = void 0 && (void 0).__rest || function (s, e) {
+  var t = {};
+  for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+var SpinSizes = (0, _type.tuple)('small', 'default', 'large');
+// Render indicator
+var defaultIndicator = null;
+function renderIndicator(prefixCls, props) {
+  var indicator = props.indicator;
+  var dotClassName = "".concat(prefixCls, "-dot");
+  // should not be render default indicator when indicator value is null
+  if (indicator === null) {
+    return null;
+  }
+  if ((0, _reactNode.isValidElement)(indicator)) {
+    return (0, _reactNode.cloneElement)(indicator, {
+      className: (0, _classnames["default"])(indicator.props.className, dotClassName)
+    });
+  }
+  if ((0, _reactNode.isValidElement)(defaultIndicator)) {
+    return (0, _reactNode.cloneElement)(defaultIndicator, {
+      className: (0, _classnames["default"])(defaultIndicator.props.className, dotClassName)
+    });
+  }
+  return /*#__PURE__*/React.createElement("span", {
+    className: (0, _classnames["default"])(dotClassName, "".concat(prefixCls, "-dot-spin"))
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "".concat(prefixCls, "-dot-item")
+  }), /*#__PURE__*/React.createElement("i", {
+    className: "".concat(prefixCls, "-dot-item")
+  }), /*#__PURE__*/React.createElement("i", {
+    className: "".concat(prefixCls, "-dot-item")
+  }), /*#__PURE__*/React.createElement("i", {
+    className: "".concat(prefixCls, "-dot-item")
+  }));
+}
+function shouldDelay(spinning, delay) {
+  return !!spinning && !!delay && !isNaN(Number(delay));
+}
+var Spin = function Spin(props) {
+  var prefixCls = props.spinPrefixCls,
+    _props$spinning = props.spinning,
+    customSpinning = _props$spinning === void 0 ? true : _props$spinning,
+    delay = props.delay,
+    className = props.className,
+    _props$size = props.size,
+    size = _props$size === void 0 ? 'default' : _props$size,
+    tip = props.tip,
+    wrapperClassName = props.wrapperClassName,
+    style = props.style,
+    children = props.children,
+    restProps = __rest(props, ["spinPrefixCls", "spinning", "delay", "className", "size", "tip", "wrapperClassName", "style", "children"]);
+  var _React$useState = React.useState(function () {
+      return customSpinning && !shouldDelay(customSpinning, delay);
+    }),
+    _React$useState2 = (0, _slicedToArray2["default"])(_React$useState, 2),
+    spinning = _React$useState2[0],
+    setSpinning = _React$useState2[1];
+  React.useEffect(function () {
+    var updateSpinning = (0, _debounce["default"])(function () {
+      setSpinning(customSpinning);
+    }, delay);
+    updateSpinning();
+    return function () {
+      var _a;
+      (_a = updateSpinning === null || updateSpinning === void 0 ? void 0 : updateSpinning.cancel) === null || _a === void 0 ? void 0 : _a.call(updateSpinning);
+    };
+  }, [delay, customSpinning]);
+  var isNestedPattern = function isNestedPattern() {
+    return typeof children !== 'undefined';
+  };
+  var renderSpin = function renderSpin(_ref) {
+    var _classNames;
+    var direction = _ref.direction;
+    var spinClassName = (0, _classnames["default"])(prefixCls, (_classNames = {}, (0, _defineProperty2["default"])(_classNames, "".concat(prefixCls, "-sm"), size === 'small'), (0, _defineProperty2["default"])(_classNames, "".concat(prefixCls, "-lg"), size === 'large'), (0, _defineProperty2["default"])(_classNames, "".concat(prefixCls, "-spinning"), spinning), (0, _defineProperty2["default"])(_classNames, "".concat(prefixCls, "-show-text"), !!tip), (0, _defineProperty2["default"])(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames), className);
+    // fix https://fb.me/react-unknown-prop
+    var divProps = (0, _omit["default"])(restProps, ['indicator', 'prefixCls']);
+    var spinElement = /*#__PURE__*/React.createElement("div", (0, _extends2["default"])({}, divProps, {
+      style: style,
+      className: spinClassName,
+      "aria-live": "polite",
+      "aria-busy": spinning
+    }), renderIndicator(prefixCls, props), tip ? /*#__PURE__*/React.createElement("div", {
+      className: "".concat(prefixCls, "-text")
+    }, tip) : null);
+    if (isNestedPattern()) {
+      var containerClassName = (0, _classnames["default"])("".concat(prefixCls, "-container"), (0, _defineProperty2["default"])({}, "".concat(prefixCls, "-blur"), spinning));
+      return /*#__PURE__*/React.createElement("div", (0, _extends2["default"])({}, divProps, {
+        className: (0, _classnames["default"])("".concat(prefixCls, "-nested-loading"), wrapperClassName)
+      }), spinning && /*#__PURE__*/React.createElement("div", {
+        key: "loading"
+      }, spinElement), /*#__PURE__*/React.createElement("div", {
+        className: containerClassName,
+        key: "container"
+      }, children));
+    }
+    return spinElement;
+  };
+  return /*#__PURE__*/React.createElement(_configProvider.ConfigConsumer, null, renderSpin);
+};
+var SpinFC = function SpinFC(props) {
+  var customizePrefixCls = props.prefixCls;
+  var _React$useContext = React.useContext(_configProvider.ConfigContext),
+    getPrefixCls = _React$useContext.getPrefixCls;
+  var spinPrefixCls = getPrefixCls('spin', customizePrefixCls);
+  var spinClassProps = (0, _extends2["default"])((0, _extends2["default"])({}, props), {
+    spinPrefixCls: spinPrefixCls
+  });
+  return /*#__PURE__*/React.createElement(Spin, (0, _extends2["default"])({}, spinClassProps));
+};
+SpinFC.setDefaultIndicator = function (indicator) {
+  defaultIndicator = indicator;
+};
+if (false) {}
+var _default = SpinFC;
+exports["default"] = _default;
 
 /***/ }),
 

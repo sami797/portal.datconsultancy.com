@@ -1,9 +1,9 @@
-(self["webpackChunkdat_projects"] = self["webpackChunkdat_projects"] || []).push([[7437],{
+"use strict";
+(self["webpackChunkdat_projects"] = self["webpackChunkdat_projects"] || []).push([[279],{
 
 /***/ 95251:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
@@ -70,7 +70,6 @@ color:(_LeaveRequestStatus$d2=commonEnums/* LeaveRequestStatus */.PG[data===null
 /***/ 51297:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Z: () => (/* binding */ LeaveRequestCard)
 /* harmony export */ });
@@ -90,7 +89,6 @@ const{Paragraph}=antd__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A;const Lea
 /***/ 50982:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   j: () => (/* binding */ LeaveRequestModule)
 /* harmony export */ });
@@ -123,54 +121,11 @@ class LeaveRequestModule{constructor(){this.endPoint="leave-request";this.getAll
 /***/ 68548:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 // extracted by mini-css-extract-plugin
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"container":"styles_container__+b74x","card":"styles_card__jPVVz","cardBody":"styles_cardBody__uHpln","cardBodyTop":"styles_cardBodyTop__cnyK5","topRight":"styles_topRight__gpY7u","status":"styles_status__+fK2a","file":"styles_file__8pP0k","cardTitle":"styles_cardTitle__4MP+-","cardBodyMiddle":"styles_cardBodyMiddle__Ujx6q","purpose":"styles_purpose__eyN-k","cardBodyEnd":"styles_cardBodyEnd__SD7Rm","dateWrap":"styles_dateWrap__6oP6f","fromDate":"styles_fromDate__-S8xQ","bold":"styles_bold__reoHM","date":"styles_date__qulWa","fullWidth":"styles_fullWidth__8y-75"});
-
-/***/ }),
-
-/***/ 17640:
-/***/ (() => {
-
-/* (ignored) */
-
-/***/ }),
-
-/***/ 45618:
-/***/ (() => {
-
-/* (ignored) */
-
-/***/ }),
-
-/***/ 97492:
-/***/ (() => {
-
-/* (ignored) */
-
-/***/ }),
-
-/***/ 31815:
-/***/ (() => {
-
-/* (ignored) */
-
-/***/ }),
-
-/***/ 89052:
-/***/ (() => {
-
-/* (ignored) */
-
-/***/ }),
-
-/***/ 82787:
-/***/ (() => {
-
-/* (ignored) */
 
 /***/ })
 

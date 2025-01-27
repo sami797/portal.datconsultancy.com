@@ -1,9 +1,9 @@
-"use strict";
-(self["webpackChunkdat_projects"] = self["webpackChunkdat_projects"] || []).push([[6920],{
+(self["webpackChunkdat_projects"] = self["webpackChunkdat_projects"] || []).push([[2126],{
 
 /***/ 87031:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
@@ -25,6 +25,7 @@ const CardShimmer=()=>{return/*#__PURE__*/(0,jsx_runtime.jsx)("div",{className:s
 /***/ 32282:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
@@ -102,6 +103,7 @@ return[...prev,...filteredData];});}).catch(err=>{message/* default */.Ay.error(
 /***/ 41161:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   w: () => (/* binding */ LeaveTypeModule)
 /* harmony export */ });
@@ -115,6 +117,7 @@ class LeaveTypeModule{constructor(){this.endPoint="leave-type";/**Get all Biomet
 /***/ 56272:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -143,6 +146,7 @@ if (false) {}
 /***/ 62298:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
@@ -196,6 +200,48 @@ var FormOutlined_FormOutlined = function FormOutlined(props, ref) {
 };
 if (false) {}
 /* harmony default export */ const icons_FormOutlined = (/*#__PURE__*/react.forwardRef(FormOutlined_FormOutlined));
+
+/***/ }),
+
+/***/ 17640:
+/***/ (() => {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 45618:
+/***/ (() => {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 97492:
+/***/ (() => {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 31815:
+/***/ (() => {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 89052:
+/***/ (() => {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 82787:
+/***/ (() => {
+
+/* (ignored) */
 
 /***/ })
 
