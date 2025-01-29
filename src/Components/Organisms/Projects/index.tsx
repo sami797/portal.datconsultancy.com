@@ -32,11 +32,13 @@ import styles from "../Common/styles.module.scss";
 import ComponentStyles from "./styles.module.scss";
 import { QueryType } from "@modules/Common/common.interface";
 import { CardShimmer } from "@atoms/CardShimmer";
-import { TablePaginationConfig } from 'antd/es/table';
 
+import { TablePaginationConfig } from 'antd';
+import type { FilterValue, SorterResult } from 'antd/es/table/interface';
 import apiInstance from '@services/axiosInstance';
 import Select from "antd/es/select";
 import { Option } from "antd/lib/mentions";
+import { TableCurrentDataSource } from "antd/lib/table/interface";
 interface Project {
   title: string;
   referenceNumber: string;
@@ -175,15 +177,14 @@ const AllProjects: FC = () => {
     initialQuery: { perPage: 100 }
   });
   const sortData = (data: ProjectTypes[] = [], sortField: keyof ProjectTypes, sortOrder: 'ascend' | 'descend'): ProjectTypes[] => {
-    return data.sort((a, b) => {
-      const aValue = a[sortField];
-      const bValue = b[sortField];
-  
-      // Ensure aValue and bValue are not undefined
+    return [...data].sort((a, b) => {  // Create a copy of the array before sorting
+      const aValue = a[sortField]?.toString().toLowerCase();
+      const bValue = b[sortField]?.toString().toLowerCase();
+    
       if (aValue === undefined || bValue === undefined) {
-        return 0; // or handle according to your preference
+        return 0;
       }
-  
+    
       if (sortOrder === 'ascend') {
         return aValue < bValue ? -1 : aValue > bValue ? 1 : 0;
       } else {
@@ -191,23 +192,30 @@ const AllProjects: FC = () => {
       }
     });
   };
-  
 
   const handleSortChange = (value: 'ascend' | 'descend') => {
     setSortOrder(value);
+    // Apply sorting immediately when sort order changes
+    const sortedData = sortData(projects, sortField, value);
+    setProjects(sortedData);
   };
-
   // Handle table change (pagination, filters, sorting)
   const handleTableChange = (
     pagination: TablePaginationConfig,
-    filters: Record<string, string[]>,
-    sorter: Sorter
+    filters: Record<string, FilterValue | null>,
+    sorter: SorterResult<ProjectTypes> | SorterResult<ProjectTypes>[],
+    extra: TableCurrentDataSource<ProjectTypes>
   ): void => {
-    const { field, order } = sorter;
-  
-    if (field && order) {
-      setSortField(field as keyof ProjectTypes); // Cast 'field' to keyof ProjectTypes
-      setSortOrder(order);
+    if (!Array.isArray(sorter)) {
+      const { field, order } = sorter;
+      if (field && order) {
+        setSortField(field as keyof ProjectTypes);
+        setSortOrder(order);
+        
+        // Apply sorting to the data
+        const sortedData = sortData(projects, field as keyof ProjectTypes, order);
+        setProjects(sortedData);
+      }
     }
   };
   
@@ -663,22 +671,19 @@ const AllProjects: FC = () => {
             ) : (
               <>
                 {projectViewAs === "table" ? (
-                  <ProjectTable
-                    data={{
-                      allProjects: sortData(data!, sortField, sortOrder) as ProjectTypes[],
-                      onRefresh: onUpdate as any,
-                      
-                      projectStates: projectStates!,
-                    }}
-                    
-                    permissions={permissions}
-                    rowSelection={{
-                      selectedRowKeys,
-                      onChange: setSelectedRowKeys,
-                    }}
-      
-                  />
-                  
+     <ProjectTable
+     data={{
+       allProjects: sortData(data!, sortField, sortOrder) as ProjectTypes[],
+       onRefresh: onUpdate as any,
+       projectStates: projectStates!,
+     }}
+     permissions={permissions}
+     rowSelection={{
+       selectedRowKeys,
+       onChange: setSelectedRowKeys,
+     }}
+     onChange={handleTableChange} // Ensure this is set correctly
+   />
                 ) : (
                   <ProjectsCard
                     data={{

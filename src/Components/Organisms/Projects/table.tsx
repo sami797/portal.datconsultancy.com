@@ -18,6 +18,9 @@ import { ProjectStateModal } from '../Projects/Details/Sections/States/modal'
 import styles from '../Common/styles.module.scss';
 import { UserPermissionsEnum } from "../../../Modules/User/permissions";
 
+import {  TablePaginationConfig } from 'antd';
+import type { FilterValue, SorterResult } from 'antd/es/table/interface';
+import { TableCurrentDataSource } from 'antd/lib/table/interface';
 
 const { Paragraph } = AntdTypography;
 
@@ -25,20 +28,23 @@ type PermissionType = { [key in ProjectPermissionsEnum]: boolean };
 
 interface ProjectTableProps {
   data: {
-    allProjects: ProjectTypes[]
-    projectStates: ProjectStateType[]
-    onRefresh: <QueryType = any>(query?: QueryType) => void
-  }
-  permissions: PermissionType
+    allProjects: ProjectTypes[];
+    projectStates: ProjectStateType[];
+    onRefresh: <QueryType = any>(query?: QueryType) => void;
+  };
+  permissions: PermissionType;
   rowSelection: {
-    selectedRowKeys: Key[]
-    onChange: Dispatch<SetStateAction<Key[]>>
-  }
+    selectedRowKeys: Key[];
+    onChange: Dispatch<SetStateAction<Key[]>>;
+  };
+  onChange?: (
+    pagination: TablePaginationConfig,
+    filters: Record<string, FilterValue | null>,
+    sorter: SorterResult<ProjectTypes> | SorterResult<ProjectTypes>[],
+    extra: TableCurrentDataSource<ProjectTypes> // Add this
+  ) => void;
 }
-
-
-
-const ProjectTable: FC<ProjectTableProps> = ({ data, permissions, rowSelection }) => {
+const ProjectTable: FC<ProjectTableProps> = ({ data, permissions, rowSelection, onChange, }) => {
   const { onRefresh, allProjects, projectStates } = data
 
   // Ensure projectStates is an array before sorting
@@ -89,7 +95,7 @@ const ProjectTable: FC<ProjectTableProps> = ({ data, permissions, rowSelection }
               ellipsis={{ rows: 2, expandable: true, symbol: 'more' }}
               className="mt-1 color-dark-sub mb-0"
             >
-              Slug: {record?.slug}
+              {/* Slug: {record?.slug} */}
             </Paragraph>
             <div className="d-flex mt-1">
           <Tag
@@ -132,38 +138,7 @@ const ProjectTable: FC<ProjectTableProps> = ({ data, permissions, rowSelection }
         </div>
       ),
     },
-    // {
-    //   title: "Memberssss",
-    //   dataIndex: "ProjectMembers",
-    //   key: "ProjectMembers",
-    //   render: (ProjectMembers: ProjectTypes['ProjectMembers'], record) => {
-    //     // Project Incharge
-    //     const memberInCharge = ProjectMembers?.find((member) => member.projectRole === ProjectRoleEnum['projectIncharge'])
-    //     // Support Engineers
-    //     const supportEngineers = ProjectMembers?.filter((member) => member.projectRole === ProjectRoleEnum['supportEngineers'])
-    //     // Clients and their representatives
-    //     const allClients = record.ProjectClient
 
-    //     return (
-    //       <MembersTooltip
-    //         allClients={allClients}
-    //         memberInCharge={memberInCharge!}
-    //         supportEngineers={supportEngineers!}
-    //       >
-    //         <div>
-    //           <Avatar.Group maxCount={3} size={"small"} maxPopoverTrigger={'focus'}>
-    //             {ProjectMembers?.map((member) => (
-    //               <Avatar
-    //                 src={`${RESOURCE_BASE_URL}${member?.User?.profile}`}
-    //                 icon={<UserOutlined />}
-    //               />
-    //             ))}
-    //           </Avatar.Group>
-    //         </div>
-    //       </MembersTooltip>
-    //     )
-    //   }
-    // },
     {
       title: 'Verification',
       key: 'verification',
@@ -215,35 +190,7 @@ const ProjectTable: FC<ProjectTableProps> = ({ data, permissions, rowSelection }
       ),
     },
     
-    // {
-    //   title: 'State',
-    //   dataIndex: 'ProjectState',
-    //   key: 'ProjectState',
-    //   render: (ProjectState: ProjectTypes['ProjectState'], record) => (
-    //     <>
-    //       <Paragraph
-    //         ellipsis={{
-    //           rows: 1,
-    //           expandable: false,
-    //         }}
-    //         className="my-0 color-dark-sub"
-    //       >
-    //         <ul style={{ listStyle: 'none', padding: 0 }}>
-    //           {projectStates.map((state) => (
-    //             <li key={state.id} className="font-size-xs ml-0">{state.title}</li>
-    //           ))}
-    //         </ul>
-    //       </Paragraph>
 
-    //       <p
-    //         className="color-dark-main font-weight-bold font-size-sm mb-0 ml-1 cursor-pointer"
-    //         onClick={() => handleManageStateClick(record)}
-    //       >
-    //         Manage State
-    //       </p>
-    //     </>
-    //   ),
-    // },
     {
       title: 'State',
       dataIndex: 'ProjectState',
@@ -321,6 +268,7 @@ const ProjectTable: FC<ProjectTableProps> = ({ data, permissions, rowSelection }
       dataSource={allProjects}
       pagination={false}
       rowKey="id"
+      onChange={onChange} 
       rowSelection={rowSelection}
       style={{ border: '1px solid #d9d9d9', borderRadius: '4px' }}
     />
@@ -331,6 +279,7 @@ const ProjectTable: FC<ProjectTableProps> = ({ data, permissions, rowSelection }
     projectId={selectedProject?.id || 0}
     reloadTableData={onRefresh}
     permissions={permissions}
+    
     currentForm="projectForm" // Provide the relevant form context
     type="edit" // Provide the relevant type
   />

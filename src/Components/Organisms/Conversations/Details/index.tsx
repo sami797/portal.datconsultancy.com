@@ -101,7 +101,7 @@ const ConversationDetail: FC<ConversationDetailProps> = ({ details, setIsManageM
             {/** Reference Number*/}
             <div className={styles.details_item}>
               <p className={styles.details_item_label}>
-                Reference Number
+                Reference Numbersdddsd
               </p>
 
               <p className={`${styles.details_item_value} mb-0`}>
